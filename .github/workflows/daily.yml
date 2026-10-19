@@ -77,7 +77,7 @@ jobs:
         run: |
           ARGS=""
           if [ -n "${{ inputs.days }}" ]; then ARGS="--days ${{ inputs.days }}"; fi
-          python scripts/update.py $ARGS
+          python scripts/update.py --days 30
 
       - name: Generate AI reading notes
         id: llm
