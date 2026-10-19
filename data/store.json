@@ -1,8 +1,996 @@
 {
   "schema_version": 1,
-  "records": {},
-  "queries": {},
-  "events": [],
+  "records": {
+    "arxiv:2610.23537": {
+      "id": "arxiv:2610.23537",
+      "title": "PanoBench: A Panoptic Occupancy Prediction Benchmark for Autonomous Driving",
+      "authors": [
+        "Yi Feng",
+        "Zizhan Guo",
+        "Junwu E",
+        "Yu Ma",
+        "Mengtan Zhang",
+        "Jin Wu",
+        "Wei Ye",
+        "Hanli Wang",
+        "Qijun Chen",
+        "Danwei Wang",
+        "Rui Fan"
+      ],
+      "abstract": "Panoptic occupancy unifies 3D geometry, semantics, and instance identities, but its development is limited by scarce instance-aware annotations. Existing benchmarks mainly provide semantic labels reconstructed from incomplete sensor observations, while panoptic datasets have limited domain coverage or annotation completeness. We introduce PanoBench, a camera-centric panoptic occupancy prediction benchmark spanning synthetic and real-world driving scenes. It combines PanoBench-CarlaOcc, PanoBench-nuScenes, and PanoBench-KITTI360 through canonical data interfaces and unified evaluation protocols, providing multi-resolution annotations with persistent instance identities. The synthetic branch derives complete panoptic geometry from simulated meshes. For real-world data, a new pipeline reconstructs backgrounds using geometric priors and topology constraints, generates foreground mesh assets from multi-frame multi-view images, and fuses them into sparse panoptic voxels. A unified valid-mask protocol evaluates complete thing instances supported by temporal observations while scoring stuff regions at the voxel level. Analyses of observation fidelity, geometric completeness, spatial continuity, and temporal consistency demonstrate the benefits of the resulting annotations over existing occupancy benchmarks. We benchmark representative methods on semantic occupancy prediction, panoptic occupancy prediction, and 4D occupancy forecasting, and study voxel resolution, synthetic-to-real transfer, and storage efficiency. These results reveal complementary strengths of volumetric and ray-based metrics and persistent challenges in real-world instance-aware prediction. PanoBench is available at https://mias.group/PanoBench.",
+      "published": "2026-10-16T14:34:38Z",
+      "updated": "2026-10-16T14:34:38Z",
+      "version": 1,
+      "identifiers": {
+        "arxiv": [
+          "2610.23537"
+        ],
+        "doi": []
+      },
+      "url": "https://arxiv.org/abs/2610.23537",
+      "pdf": "https://arxiv.org/pdf/2610.23537",
+      "venue": "arXiv",
+      "comment": "",
+      "categories": [
+        "cs.CV"
+      ],
+      "imported": false,
+      "origin": "arxiv",
+      "first_seen": "2026-10-19T08:08:31Z",
+      "last_seen": "2026-10-19T08:08:31Z",
+      "classification": {
+        "bucket": "core",
+        "tracks": [
+          "AD"
+        ],
+        "task": "semantic",
+        "methods": [
+          "cross-modal",
+          "geometry",
+          "occupancy",
+          "temporal"
+        ],
+        "basis": "title+abstract",
+        "certainty": "needs-review",
+        "note": "自动关键词初筛;标签可能来自背景或对比描述,不代表已核实任务设置、实验条件或论文贡献。",
+        "evidence": [
+          {
+            "label": "cross-modal",
+            "quote": "y constraints, generates foreground mesh assets from multi-frame multi-view images, and fuses them into sparse panoptic voxels. A unified valid-mask protocol evaluates complet"
+          },
+          {
+            "label": "geometry",
+            "quote": "n Benchmark for Autonomous Driving Panoptic occupancy unifies 3D geometry, semantics, and instance identities, but its development is limited by scarce instance-aware annot"
+          },
+          {
+            "label": "occupancy",
+            "quote": "PanoBench: A Panoptic Occupancy Prediction Benchmark for Autonomous Driving Panoptic occupancy unifies 3D geometry, semantics, and"
+          },
+          {
+            "label": "temporal",
+            "quote": "id-mask protocol evaluates complete thing instances supported by temporal observations while scoring stuff regions at the voxel level. Analyses of observation fidelity, geom"
+          },
+          {
+            "label": "AD",
+            "quote": "PanoBench: A Panoptic Occupancy Prediction Benchmark for Autonomous Driving Panoptic occupancy unifies 3D geometry, semantics, and instance identities, but its development is"
+          }
+        ]
+      },
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": []
+    },
+    "arxiv:2610.22215": {
+      "id": "arxiv:2610.22215",
+      "title": "FutureLift: Lifting Trajectory Proposals into Bidirectional Future Graphs for Motion Forecasting",
+      "authors": [
+        "Daniel Grimm",
+        "J. Marius Zöllner"
+      ],
+      "abstract": "Accurate motion prediction is critical for safe autonomous driving, yet even strong forecasters leave residual errors in their multimodal proposals. Existing refiners compress complete proposals or update their segments sequentially, preventing the full proposed future from serving as explicit relational context for correction. We introduce FutureLift, a backbone-agnostic refiner that represents each multimodal proposal as a heterogeneous future graph, with spatially grounded temporal nodes connected to agent histories, map elements, alternative modes, and, for joint prediction, other agents future trajectories. Bidirectional temporal edges allow later evidence to revise earlier segments in a single pass, and the updated nodes predict residual coordinate and confidence corrections. Requiring only proposals, scores, and scene context, FutureLift provides a common refinement interface for structurally different forecasting backbones. On Argoverse2 and the Waymo Open Motion Dataset, it consistently improves frozen proposals and outperforms native and specialized refiners across marginal and joint forecasting. On the WOMD motion-prediction leaderboard, FutureLift ranks first in minADE (0.5049m) and minFDE (0.9942m) among the compared standard-input methods, without LiDAR or ensembling, while achieving a competitive 0.4874 Soft mAP.",
+      "published": "2026-10-15T17:00:40Z",
+      "updated": "2026-10-15T17:00:40Z",
+      "version": 1,
+      "identifiers": {
+        "arxiv": [
+          "2610.22215"
+        ],
+        "doi": []
+      },
+      "url": "https://arxiv.org/abs/2610.22215",
+      "pdf": "https://arxiv.org/pdf/2610.22215",
+      "venue": "arXiv",
+      "comment": "Accepted for presentation at WACV 2027",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "imported": false,
+      "origin": "arxiv",
+      "first_seen": "2026-10-19T08:08:31Z",
+      "last_seen": "2026-10-19T08:08:31Z",
+      "classification": {
+        "bucket": "related",
+        "tracks": [
+          "AD"
+        ],
+        "task": "segmentation",
+        "methods": [
+          "cross-modal",
+          "temporal"
+        ],
+        "basis": "title+abstract",
+        "certainty": "needs-review",
+        "note": "自动关键词初筛;标签可能来自背景或对比描述,不代表已核实任务设置、实验条件或论文贡献。",
+        "evidence": [
+          {
+            "label": "cross-modal",
+            "quote": "ving, yet even strong forecasters leave residual errors in their multimodal proposals. Existing refiners compress complete proposals or update their segments sequentially, pre"
+          },
+          {
+            "label": "temporal",
+            "quote": "roposal as a heterogeneous future graph, with spatially grounded temporal nodes connected to agent histories, map elements, alternative modes, and, for joint prediction, oth"
+          },
+          {
+            "label": "AD",
+            "quote": "tion Forecasting Accurate motion prediction is critical for safe autonomous driving, yet even strong forecasters leave residual errors in their multimodal proposals. Existing refiners"
+          }
+        ]
+      },
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": []
+    },
+    "arxiv:2610.22143": {
+      "id": "arxiv:2610.22143",
+      "title": "FALCON: FPGA-Accelerated Latency-Certifiable Occupancy Networks for Camera-Based Autonomous Driving",
+      "authors": [
+        "Haohua Que",
+        "Mingkai Liu",
+        "Handong Yao"
+      ],
+      "abstract": "A perception system that must brake for a pedestrian does not need a low average latency. It must deliver an answer before the deadline on every frame, the worst case included. Commodity edge accelerators optimize the mean through dynamic scheduling, OS jitter, thermal throttling, and contention, so their per-frame latency can be measured but not bounded. We build FALCON, a camera-based 3D occupancy front-end on the AMD Kria KR260, an embedded FPGA drawing 4.3 W idle and up to 6.6 W under inference, and make the latency guarantee layered and explicit: programmable-logic (PL) compute is cycle-bounded analytically; inference is a measured envelope over 100k-frame traces; and a watchdog enforces output delivery, publishing the previous output flagged stale when a frame is late. The deadline runs use a fixed-work proxy of six ResNet-50 DPU inferences per frame, not the full occupancy network: across three 100k-frame enforced runs, all 300k proxy frames delivered an output within the 100 ms deadline plus at most 10.2 ms, the worst of the three runs. The full six-camera FlashOcc pipeline composes to about 1.3 s per frame on the board and is not yet a 10 Hz system. The two operations the DPU cannot run, a view-transform gather and a bilinear resize, become fixed-trip-count PL IPs numerically matched to their software references. On the full Occ3D-nuScenes validation set the board reaches mIoU 29.88, 92.8% of an FP32 baseline the DPU cannot run. On a ResNet-50 probe over 100k frames the KR260 tail stays within 1.5 times its median (2.0 times for the six-inference proxy), where Jetson Orin reaches 4.4 times and the worst datacenter GPU run (NVIDIA L4) 23.6 times. The deployment recipe, HLS sources, and raw timing traces are released.",
+      "published": "2026-10-15T16:14:24Z",
+      "updated": "2026-10-16T04:02:32Z",
+      "version": 2,
+      "identifiers": {
+        "arxiv": [
+          "2610.22143"
+        ],
+        "doi": []
+      },
+      "url": "https://arxiv.org/abs/2610.22143",
+      "pdf": "https://arxiv.org/pdf/2610.22143",
+      "venue": "arXiv",
+      "comment": "Accepted to WACV 2027. 10 pages",
+      "categories": [
+        "cs.CV"
+      ],
+      "imported": false,
+      "origin": "arxiv",
+      "first_seen": "2026-10-19T08:08:31Z",
+      "last_seen": "2026-10-19T08:08:31Z",
+      "classification": {
+        "bucket": "related",
+        "tracks": [
+          "AD"
+        ],
+        "task": "adjacent",
+        "methods": [
+          "occupancy"
+        ],
+        "basis": "title+abstract",
+        "certainty": "needs-review",
+        "note": "自动关键词初筛;标签可能来自背景或对比描述,不代表已核实任务设置、实验条件或论文贡献。",
+        "evidence": [
+          {
+            "label": "occupancy",
+            "quote": "FALCON: FPGA-Accelerated Latency-Certifiable Occupancy Networks for Camera-Based Autonomous Driving A perception system that must brake for a pedestrian d"
+          },
+          {
+            "label": "AD",
+            "quote": "elerated Latency-Certifiable Occupancy Networks for Camera-Based Autonomous Driving A perception system that must brake for a pedestrian does not need a low average latency. It must d"
+          }
+        ]
+      },
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": []
+    },
+    "arxiv:2610.22450": {
+      "id": "arxiv:2610.22450",
+      "title": "DriveWorld3D Evidence Constrained 3D World Modeling and Generative Simulation for Real-World Autonomous Driving",
+      "authors": [
+        "Wei Wang",
+        "Yiru Veronika Wang",
+        "Yihan Wang",
+        "Zihao Li",
+        "Xiaohui Liang"
+      ],
+      "abstract": "Three dimensional modeling for autonomous driving must continuously estimate road geometry, obstacle occupancy, traffic participant behavior, and observational uncertainty under limited computational resources. Existing reconstruction methods can synthesize realistic novel views, but visual fidelity does not sufficiently characterize the geometric reliability required for driving. Generative world models can expand scenarios and predict future observations, yet may introduce content unsupported by measurements. We propose DriveWorld3D, a framework combining temporal video learning, measurement constraints from multiple sensors, and offline generative simulation. Its online component maintains a unified world state comprising road surfaces, volumetric occupancy, dynamic entities, and road relations, while separately representing physical occupancy, observability, and evidence provenance. Action conditioned future prediction and risk sensitive planning connect this representation to driving decisions. Its offline component reconstructs recorded scenes using neural radiance fields or 3D Gaussian Splatting, then expands long tail conditions using generative models while restricting the use of generated content as geometric ground truth. We specify data partitioning, sensor ablations, fault injection, paired closed loop testing, and real to simulation consistency assessment. The central hypothesis is that explicit evidence management can reduce dangerous false free space predictions and occlusion risk within a matched computational budget while retaining acceptable driving efficiency. All performance claims remain subject to experimental validation. Keywords: autonomous driving; 3D occupancy; sensor fusion; uncertainty; generative world models; NeRF; 3D Gaussian Splatting; closed loop simulation",
+      "published": "2026-10-15T15:48:11Z",
+      "updated": "2026-10-15T15:48:11Z",
+      "version": 1,
+      "identifiers": {
+        "arxiv": [
+          "2610.22450"
+        ],
+        "doi": []
+      },
+      "url": "https://arxiv.org/abs/2610.22450",
+      "pdf": "https://arxiv.org/pdf/2610.22450",
+      "venue": "Copilot4D: Learning Unsupervised World Models for Autonomous Driving via Discrete Diffusion. arXiv:2311.01017, 2023",
+      "comment": "10 pages",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "imported": false,
+      "origin": "arxiv",
+      "first_seen": "2026-10-19T08:08:31Z",
+      "last_seen": "2026-10-19T08:08:31Z",
+      "classification": {
+        "bucket": "related",
+        "tracks": [
+          "AD",
+          "GS"
+        ],
+        "task": "adjacent",
+        "methods": [
+          "gaussian",
+          "nerf",
+          "uncertainty",
+          "geometry",
+          "occupancy",
+          "temporal"
+        ],
+        "basis": "title+abstract",
+        "certainty": "needs-review",
+        "note": "自动关键词初筛;标签可能来自背景或对比描述,不代表已核实任务设置、实验条件或论文贡献。",
+        "evidence": [
+          {
+            "label": "gaussian",
+            "quote": "reconstructs recorded scenes using neural radiance fields or 3D Gaussian Splatting, then expands long tail conditions using generative models while restricting the use of generated c"
+          },
+          {
+            "label": "nerf",
+            "quote": "occupancy; sensor fusion; uncertainty; generative world models; NeRF; 3D Gaussian Splatting; closed loop simulation"
+          },
+          {
+            "label": "uncertainty",
+            "quote": "tacle occupancy, traffic participant behavior, and observational uncertainty under limited computational resources. Existing reconstruction methods can synthesize realistic n"
+          },
+          {
+            "label": "geometry",
+            "quote": "modeling for autonomous driving must continuously estimate road geometry, obstacle occupancy, traffic participant behavior, and observational uncertainty under limited com"
+          },
+          {
+            "label": "occupancy",
+            "quote": "omous driving must continuously estimate road geometry, obstacle occupancy, traffic participant behavior, and observational uncertainty under limited computational resources."
+          },
+          {
+            "label": "temporal",
+            "quote": "by measurements. We propose DriveWorld3D, a framework combining temporal video learning, measurement constraints from multiple sensors, and offline generative simulation. I"
+          },
+          {
+            "label": "AD",
+            "quote": "ained 3D World Modeling and Generative Simulation for Real-World Autonomous Driving Three dimensional modeling for autonomous driving must continuously estimate road geometry, obstacl"
+          },
+          {
+            "label": "GS",
+            "quote": "reconstructs recorded scenes using neural radiance fields or 3D Gaussian Splatting, then expands long tail conditions using generative models while restricting the use of generated c"
+          }
+        ]
+      },
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": []
+    },
+    "arxiv:2610.21207": {
+      "id": "arxiv:2610.21207",
+      "title": "SpaceCache: Intermediate Feature Reuse for Efficient Semantic Segmentation on Point Cloud Streams",
+      "authors": [
+        "Dongheon Yang",
+        "Beomseok Kang",
+        "Jae-Joon Kim"
+      ],
+      "abstract": "Point-cloud streams are central to autonomous driving and robotics, yet existing segmentation networks process every frame from scratch, although consecutive frames largely overlap. We observe that the intermediate features of point-cloud transformers remain semantically consistent across frames for the same spatial region, especially in deep stages. Building on this, we present SpaceCache, a training-free feature cache that reuses these features across frames. Tokens of previously observed regions skip a sequence of transformer blocks and take their cached features, only the remaining tokens are computed, and the full token layout is restored for dense prediction. Lightweight cache management keeps reused features reliable by limiting each entry's age and evicting low-confidence entries. Unlike token merging, SpaceCache selects tokens at negligible cost and runs its cache operations once per encoder stage. On both outdoor and indoor benchmarks, such as nuScenes, Waymo, and ScanNet, with two transformer backbones of Utonia and LitePT-B, SpaceCache achieves up to 1.65x speedup with less than 1-point mIoU drop and consistently outperforms token-merging methods.",
+      "published": "2026-10-15T04:02:47Z",
+      "updated": "2026-10-15T04:02:47Z",
+      "version": 1,
+      "identifiers": {
+        "arxiv": [
+          "2610.21207"
+        ],
+        "doi": []
+      },
+      "url": "https://arxiv.org/abs/2610.21207",
+      "pdf": "https://arxiv.org/pdf/2610.21207",
+      "venue": "arXiv",
+      "comment": "",
+      "categories": [
+        "cs.CV"
+      ],
+      "imported": false,
+      "origin": "arxiv",
+      "first_seen": "2026-10-19T08:08:31Z",
+      "last_seen": "2026-10-19T08:08:31Z",
+      "classification": {
+        "bucket": "core",
+        "tracks": [
+          "AD"
+        ],
+        "task": "semantic",
+        "methods": [],
+        "basis": "title+abstract",
+        "certainty": "clear-keywords",
+        "note": "自动关键词初筛;标签可能来自背景或对比描述,不代表已核实任务设置、实验条件或论文贡献。",
+        "evidence": [
+          {
+            "label": "AD",
+            "quote": "tation on Point Cloud Streams Point-cloud streams are central to autonomous driving and robotics, yet existing segmentation networks process every frame from scratch, although consecu"
+          }
+        ]
+      },
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": []
+    },
+    "arxiv:2610.18686": {
+      "id": "arxiv:2610.18686",
+      "title": "RadarGSOcc: Doppler-Aware 3D Semantic Occupancy Prediction Using 4D Radar Tensor with Geometric-Semantic Feature Extraction",
+      "authors": [
+        "Christofel Rio Goenawan",
+        "Dong-Hee Paek",
+        "Seung-Hyun Kong"
+      ],
+      "abstract": "3D semantic occupancy prediction is crucial for autonomous driving, but camera-based methods degrade in low-light conditions and LiDAR-based methods are sensitive to adverse weather. 4D radar is more robust, yet its sparsity and the high cost of radar tensor processing limit its use. We propose Radar Geometric-Semantic Occupancy Prediction (RadarGSOcc), an efficient framework that directly processes 4D radar tensors by separately extracting geometric and semantic features, including Doppler information, with a deformable attention-based geometric refinement module as its key component. We also introduce the K-Radar 3DSemOcc benchmark, the first large-scale benchmark for 3D semantic occupancy prediction using 4D radar tensors, built on the K-Radar dataset with refined LiDAR-based annotations. RadarGSOcc predicts 15 classes within a 51.2m range and achieves 38.2% IoU, 7.6% mIoU, and 25.5% weighted mIoU, outperforming RadarOcc by 17% relative (25.5 vs. 21.9) in weighted mIoU while using fewer parameters and lower computation. It substantially improves truck prediction while trading off car accuracy, outperforms camera-based approaches, and narrows the gap with LiDAR-based methods. To assess robustness without per-frame ground truth in adverse weather, we further propose a novel proxy metric, Environment-Based KL Divergence (EBKL), under which 4D radar proves a reliable and efficient modality for 3D semantic occupancy prediction. The dataset and code will be publicly available.",
+      "published": "2026-10-13T16:40:59Z",
+      "updated": "2026-10-13T16:40:59Z",
+      "version": 1,
+      "identifiers": {
+        "arxiv": [
+          "2610.18686"
+        ],
+        "doi": []
+      },
+      "url": "https://arxiv.org/abs/2610.18686",
+      "pdf": "https://arxiv.org/pdf/2610.18686",
+      "venue": "arXiv",
+      "comment": "",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.RO"
+      ],
+      "imported": false,
+      "origin": "arxiv",
+      "first_seen": "2026-10-19T08:08:31Z",
+      "last_seen": "2026-10-19T08:08:31Z",
+      "classification": {
+        "bucket": "related",
+        "tracks": [
+          "AD"
+        ],
+        "task": "adjacent",
+        "methods": [
+          "geometry",
+          "occupancy",
+          "temporal"
+        ],
+        "basis": "title+abstract",
+        "certainty": "clear-keywords",
+        "note": "自动关键词初筛;标签可能来自背景或对比描述,不代表已核实任务设置、实验条件或论文贡献。",
+        "evidence": [
+          {
+            "label": "geometry",
+            "quote": "ware 3D Semantic Occupancy Prediction Using 4D Radar Tensor with Geometric-Semantic Feature Extraction 3D semantic occupancy prediction is crucial for autonomous driving, b"
+          },
+          {
+            "label": "occupancy",
+            "quote": "RadarGSOcc: Doppler-Aware 3D Semantic Occupancy Prediction Using 4D Radar Tensor with Geometric-Semantic Feature Extraction 3D semantic occupancy p"
+          },
+          {
+            "label": "temporal",
+            "quote": "RadarGSOcc: Doppler-Aware 3D Semantic Occupancy Prediction Using 4D Radar Tensor with Geometric-Semantic Feature Extraction 3D semantic occupancy prediction is crucial"
+          },
+          {
+            "label": "AD",
+            "quote": "ature Extraction 3D semantic occupancy prediction is crucial for autonomous driving, but camera-based methods degrade in low-light conditions and LiDAR-based methods are sensitive to"
+          }
+        ]
+      },
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": []
+    },
+    "arxiv:2610.17688": {
+      "id": "arxiv:2610.17688",
+      "title": "OccWAM: Occupancy World-Action Models with Joint Scene-to-Ego Flow Matching",
+      "authors": [
+        "Qihang Huang",
+        "Wenhui Huang",
+        "Collister Chua",
+        "Shiyu Fang",
+        "Zhan Chen",
+        "Songyan Zhang",
+        "Zhidong Wang",
+        "Daiying Tian",
+        "Chen Lv"
+      ],
+      "abstract": "Occupancy world models provide a structured, metric representation of future driving scenes, making them a promising basis for end-to-end autonomous driving. However, existing occupancy-aware planners typically couple occupancy prediction and action generation through either hierarchical coupling or parallel multi-task learning. Hierarchical methods use occupancy either as a fully predicted future preceding action generation or as an action-conditioned rollout for trajectory evaluation, whereas parallel multi-task methods predict occupancy alongside planning through a separate branch or auxiliary objective. These interfaces retain either an explicit generation order or a role asymmetry, limiting reciprocal interaction between world prediction and action generation during trajectory formation. We propose OccWAM, an occupancy-native world-action model that jointly generates dense future occupancy and continuous ego trajectories via flow matching conditioned on scene representations. Building on this joint formulation, we introduce scene-to-ego world-action flow matching, a two-stage formulation. The first stage predicts scene-centric occupancy together with an absolute ego trajectory, providing a stable representation of future scene evolution. The same predicted world is then re-indexed into the future ego frames induced by the initial trajectory, where ego motion is represented through adjacent pose increments and a second joint flow refines ego-centric occupancy and motion for action-aligned planning. Unlike video-based world-action models, OccWAM preserves explicit semantic geometry for direct planning reasoning without pixel synthesis. Extensive experiments on Bench2Drive and nuScenes demonstrate state-of-the-art performance in closed-loop driving, open-loop planning, and future occupancy prediction.",
+      "published": "2026-10-13T04:10:00Z",
+      "updated": "2026-10-13T04:10:00Z",
+      "version": 1,
+      "identifiers": {
+        "arxiv": [
+          "2610.17688"
+        ],
+        "doi": []
+      },
+      "url": "https://arxiv.org/abs/2610.17688",
+      "pdf": "https://arxiv.org/pdf/2610.17688",
+      "venue": "arXiv",
+      "comment": "",
+      "categories": [
+        "cs.RO"
+      ],
+      "imported": false,
+      "origin": "arxiv",
+      "first_seen": "2026-10-19T08:08:31Z",
+      "last_seen": "2026-10-19T08:08:31Z",
+      "classification": {
+        "bucket": "excluded",
+        "tracks": [
+          "AD"
+        ],
+        "task": "adjacent",
+        "methods": [
+          "alignment",
+          "geometry",
+          "occupancy"
+        ],
+        "basis": "title+abstract",
+        "certainty": "needs-review",
+        "note": "自动关键词初筛;标签可能来自背景或对比描述,不代表已核实任务设置、实验条件或论文贡献。",
+        "evidence": [
+          {
+            "label": "alignment",
+            "quote": "d joint flow refines ego-centric occupancy and motion for action-aligned planning. Unlike video-based world-action models, OccWAM preserves explicit semantic geometry for"
+          },
+          {
+            "label": "geometry",
+            "quote": "eo-based world-action models, OccWAM preserves explicit semantic geometry for direct planning reasoning without pixel synthesis. Extensive experiments on Bench2Drive and nu"
+          },
+          {
+            "label": "occupancy",
+            "quote": "OccWAM: Occupancy World-Action Models with Joint Scene-to-Ego Flow Matching Occupancy world models provide a structur"
+          },
+          {
+            "label": "AD",
+            "quote": "ure driving scenes, making them a promising basis for end-to-end autonomous driving. However, existing occupancy-aware planners typically couple occupancy prediction and action genera"
+          }
+        ]
+      },
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": []
+    },
+    "arxiv:2610.16906": {
+      "id": "arxiv:2610.16906",
+      "title": "Mining Cross-Modal Perception Gaps in Autonomous Driving: When Camera and LiDAR Disagree",
+      "authors": [
+        "Hongsen Cao",
+        "Mona Jaber",
+        "Shanxin Yuan",
+        "Ahmed Sayed"
+      ],
+      "abstract": "Multi-modal fusion for 3D object detection assumes that cameras and LiDAR are broadly complementary. In practice, how much each modality is trusted at a given location is decided by learned weights that are neither characterized nor auditable. We label every ground-truth object by which modalities detected it, then mine the resulting 0.4M-object database across nuScenes, KITTI, and Waymo. Because the patterns shift with distance from the ego vehicle, we read the mined model through Spatially Stratified Feature Attribution (SSFA), which conditions Shapley attribution on distance zones and exposes structure that global attribution averages away. Three assumptions built into the current fusion design do not hold. The modality-preference boundary tracks the object itself: a traffic cone is nearly six times as likely as a truck to be seen by the camera alone (16.8% vs. 2.9%), regardless of range. Camera-only detections peak at 10-30 m, inside the band usually ceded to LiDAR, and fall away on either side. The drivers of failure are not additive either: the distance - density interaction alone outweighs the entire main effect of viewing direction. We further find that modality dominance is directionally non-stationary, with objects behind the vehicle being markedly more LiDAR-dominant than those in front. We compile the mined structure into a Modality Reliability Map and inject it into four pretrained fusion detectors through a lightweight attention layer. This improves performance by up to 1.3 mean Average Precision (mAP) while fine-tuning under 4% of their parameters in 2-3 GPU-hours. Our work lifts reliability out of the weights and treats it as a quantity that can be examined before deployment. That is what a safety measure for multi-modal perception must rest on.",
+      "published": "2026-10-12T14:56:21Z",
+      "updated": "2026-10-12T14:56:21Z",
+      "version": 1,
+      "identifiers": {
+        "arxiv": [
+          "2610.16906"
+        ],
+        "doi": []
+      },
+      "url": "https://arxiv.org/abs/2610.16906",
+      "pdf": "https://arxiv.org/pdf/2610.16906",
+      "venue": "arXiv",
+      "comment": "",
+      "categories": [
+        "cs.CV"
+      ],
+      "imported": false,
+      "origin": "arxiv",
+      "first_seen": "2026-10-19T08:08:31Z",
+      "last_seen": "2026-10-19T08:08:31Z",
+      "classification": {
+        "bucket": "related",
+        "tracks": [
+          "AD"
+        ],
+        "task": "adjacent",
+        "methods": [
+          "self-supervised",
+          "cross-modal"
+        ],
+        "basis": "title+abstract",
+        "certainty": "needs-review",
+        "note": "自动关键词初筛;标签可能来自背景或对比描述,不代表已核实任务设置、实验条件或论文贡献。",
+        "evidence": [
+          {
+            "label": "self-supervised",
+            "quote": "tructure into a Modality Reliability Map and inject it into four pretrained fusion detectors through a lightweight attention layer. This improves performance by up to 1.3 me"
+          },
+          {
+            "label": "cross-modal",
+            "quote": "Mining Cross-Modal Perception Gaps in Autonomous Driving: When Camera and LiDAR Disagree Multi-modal fusion for 3D obj"
+          },
+          {
+            "label": "AD",
+            "quote": "Mining Cross-Modal Perception Gaps in Autonomous Driving: When Camera and LiDAR Disagree Multi-modal fusion for 3D object detection assumes that cameras and"
+          }
+        ]
+      },
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": []
+    },
+    "arxiv:2610.21668": {
+      "id": "arxiv:2610.21668",
+      "title": "Edit4D: Editable 4D Scene Generation with Textual Control",
+      "authors": [
+        "Chanwoo Kim",
+        "Tackgeun You",
+        "Hwasup Lim"
+      ],
+      "abstract": "We introduce Edit4D, an editable text-to-4D scene generation framework that constructs 4D scenes from separate background and dynamic character representations. Recent advances in generative models have enabled text-driven dynamic scene synthesis, but editable 4D scene generation remains challenging due to the need to preserve spatial geometry and temporal dynamics. Existing approaches typically generate holistic scene videos, where the background and dynamic characters are coupled, making object-level editing and flexible camera control difficult. Edit4D addresses these limitations through a stage-specific generation pipeline. Given a user instruction, Edit4D first decomposes it into stage-specific prompts for background, dynamic character, and scene-character composition. Using these prompts, we synthesize multi-view scene images with text-to-image and camera-conditioned generative priors and reconstruct a background 3D Gaussian splatting representation. We then generate a character image, animate it with an image-conditioned video prior, reconstruct a 4D mesh, and bind Gaussian primitives to obtain a character representation. Finally, both components are composed through text-guided segmentation and contact-aware optimization. A global scene refinement is then performed to improve harmonization and rendering consistency. By integrating stage-specific components, Edit4D enables controllable camera motion, flexible object-level editing, and the practical construction of editable 4D scenes. Project page: https://chanwo0kim.github.io/Edit4D/",
+      "published": "2026-10-15T10:52:22Z",
+      "updated": "2026-10-15T10:52:22Z",
+      "version": 1,
+      "identifiers": {
+        "arxiv": [
+          "2610.21668"
+        ],
+        "doi": []
+      },
+      "url": "https://arxiv.org/abs/2610.21668",
+      "pdf": "https://arxiv.org/pdf/2610.21668",
+      "venue": "arXiv",
+      "comment": "21 pages, 16 figures. Project page: https://chanwo0kim.github.io/Edit4D/",
+      "categories": [
+        "cs.CV"
+      ],
+      "imported": false,
+      "origin": "arxiv",
+      "first_seen": "2026-10-19T08:08:31Z",
+      "last_seen": "2026-10-19T08:08:31Z",
+      "classification": {
+        "bucket": "related",
+        "tracks": [
+          "GS"
+        ],
+        "task": "segmentation",
+        "methods": [
+          "cross-modal",
+          "diffusion",
+          "gaussian",
+          "prompt-adapter",
+          "geometry",
+          "temporal"
+        ],
+        "basis": "title+abstract",
+        "certainty": "needs-review",
+        "note": "自动关键词初筛;标签可能来自背景或对比描述,不代表已核实任务设置、实验条件或论文贡献。",
+        "evidence": [
+          {
+            "label": "cross-modal",
+            "quote": "scene-character composition. Using these prompts, we synthesize multi-view scene images with text-to-image and camera-conditioned generative priors and reconstruct a backgrou"
+          },
+          {
+            "label": "diffusion",
+            "quote": "ulti-view scene images with text-to-image and camera-conditioned generative priors and reconstruct a background 3D Gaussian splatting representation. We then generate a character im"
+          },
+          {
+            "label": "gaussian",
+            "quote": "ra-conditioned generative priors and reconstruct a background 3D Gaussian splatting representation. We then generate a character image, animate it with an image-conditioned video prio"
+          },
+          {
+            "label": "prompt-adapter",
+            "quote": "user instruction, Edit4D first decomposes it into stage-specific prompts for background, dynamic character, and scene-character composition. Using these prompts, we synthe"
+          },
+          {
+            "label": "geometry",
+            "quote": "neration remains challenging due to the need to preserve spatial geometry and temporal dynamics. Existing approaches typically generate holistic scene videos, where the bac"
+          },
+          {
+            "label": "temporal",
+            "quote": "ins challenging due to the need to preserve spatial geometry and temporal dynamics. Existing approaches typically generate holistic scene videos, where the background and dy"
+          },
+          {
+            "label": "GS",
+            "quote": "ra-conditioned generative priors and reconstruct a background 3D Gaussian splatting representation. We then generate a character image, animate it with an image-conditioned video prio"
+          }
+        ]
+      },
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": []
+    },
+    "arxiv:2610.21619": {
+      "id": "arxiv:2610.21619",
+      "title": "Training-Free Target-Aware Refinement of 3D Gaussian Language Map",
+      "authors": [
+        "Sibaek Lee",
+        "Kyeongsu Kang",
+        "Seongbo Ha",
+        "Yewon Jeon",
+        "Joonyeol Choi",
+        "Daegeol Ko",
+        "Jaehyuk Hur",
+        "Taemin Choi",
+        "Minsu Kim",
+        "Hyungjoo Ahn",
+        "Wonsok Yoo",
+        "Hyeonwoo Yu"
+      ],
+      "abstract": "Distilling vision-language features into 3D Gaussian Splatting yields a language map that can be queried with arbitrary text. In deployment, however, a small set of user-specified targets must be reliably located, which current distilled maps often miss, while open-vocabulary queryability for other words must remain intact. We propose a training-free, target-aware refinement of an already-distilled language map. Guided by a text-promptable segmenter, the visual embedding inside each detected target region is blended with the target text embedding, a convex combination whose coefficient sets the amount of injected prior, while non-target regions are left untouched. Injecting too much overwrites appearance cues and general queryability, so we seek, for each target, the smallest coefficient that still lets it win, and we obtain every coefficient in closed form, leaving no hyperparameters to tune. We further identify a failure mode of injection in language-goal localization. Text embeddings share a common component, and injecting them makes the standard cosine read-out query-agnostic, which a centering step in the read-out removes. Across three benchmarks, the refinement consistently improves open-vocabulary segmentation, roughly doubling the base mIoU on Replica, and localizes language goals more reliably than the base map. It also transfers as a plug-in to off-the-shelf field-based and object-level language maps and supports a real-world demonstration in which a legged robot navigates to natural-language goals. Project page and code: https://lab-of-ai-and-robotics.github.io/target-aware-langmap/",
+      "published": "2026-10-15T10:00:53Z",
+      "updated": "2026-10-15T10:00:53Z",
+      "version": 1,
+      "identifiers": {
+        "arxiv": [
+          "2610.21619"
+        ],
+        "doi": []
+      },
+      "url": "https://arxiv.org/abs/2610.21619",
+      "pdf": "https://arxiv.org/pdf/2610.21619",
+      "venue": "arXiv",
+      "comment": "8 pages, 6 figures. Project page: https://lab-of-ai-and-robotics.github.io/target-aware-langmap/",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "imported": false,
+      "origin": "arxiv",
+      "first_seen": "2026-10-19T08:08:31Z",
+      "last_seen": "2026-10-19T08:08:31Z",
+      "classification": {
+        "bucket": "related",
+        "tracks": [
+          "GS"
+        ],
+        "task": "segmentation",
+        "methods": [
+          "vision-language",
+          "distillation",
+          "gaussian",
+          "prompt-adapter"
+        ],
+        "basis": "title+abstract",
+        "certainty": "needs-review",
+        "note": "自动关键词初筛;标签可能来自背景或对比描述,不代表已核实任务设置、实验条件或论文贡献。",
+        "evidence": [
+          {
+            "label": "vision-language",
+            "quote": "e Target-Aware Refinement of 3D Gaussian Language Map Distilling vision-language features into 3D Gaussian Splatting yields a language map that can be queried with arbitrary text."
+          },
+          {
+            "label": "distillation",
+            "quote": "raining-Free Target-Aware Refinement of 3D Gaussian Language Map Distilling vision-language features into 3D Gaussian Splatting yields a language map that can be queried wi"
+          },
+          {
+            "label": "gaussian",
+            "quote": "aussian Language Map Distilling vision-language features into 3D Gaussian Splatting yields a language map that can be queried with arbitrary text. In deployment, however, a small set"
+          },
+          {
+            "label": "prompt-adapter",
+            "quote": "efinement of an already-distilled language map. Guided by a text-promptable segmenter, the visual embedding inside each detected target region is blended with the target t"
+          },
+          {
+            "label": "GS",
+            "quote": "aussian Language Map Distilling vision-language features into 3D Gaussian Splatting yields a language map that can be queried with arbitrary text. In deployment, however, a small set"
+          }
+        ]
+      },
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": []
+    },
+    "arxiv:2610.19502": {
+      "id": "arxiv:2610.19502",
+      "title": "Holi-Spatial 360: Generative Reconstruction from Sparse Panoramas for Spatial Rendering and Intelligence",
+      "authors": [
+        "Yuanyuan Gao",
+        "Zhirui Liu",
+        "Yuning Gong",
+        "Yifei Liu",
+        "Yifan Zhan",
+        "Kuixuan Jiao",
+        "Xiaolong Zhou",
+        "Yifan Yang",
+        "Hongjie Zhang",
+        "Xue Yang",
+        "Dan Xu",
+        "Zhihang Zhong"
+      ],
+      "abstract": "Spatial intelligence requires scalable 3D environments that are both photorealistic and semantically grounded, yet existing indoor datasets are dominated by room-scale captures and costly LiDAR acquisition. Online real-estate platforms offer abundant panoramas of diverse multi-room homes, but sparse viewpoints and texture-poor regions make reconstruction severely under-constrained. We introduce Holi-Spatial 360, a generative reconstruction and data curation framework for converting these panoramas into annotated multi-room 3D environments. Because reconstruction quality bounds subsequent generation, our Correspondence-Guided Geometric Optimization converts feed-forward reconstruction priors into reliable cross-view constraints and builds a coherent 3D Gaussian Splatting representation as 3D spatial memory. Adapted single-image and video priors then restore appearance and complete continuous trajectories while preserving observed content. The reconstructed scenes support arbitrary RGB-D rendering and an automated curation pipeline that combines end-to-end 3D grounding with VLM-based verification. Holi360 contains over 1K multi-room 3DGS scenes, more than 100K instance annotations, and 2M spatial question-answer pairs. We also introduce the Holi360 benchmark to evaluate the spatial understanding of VLMs in real-world, multi-room indoor environments. Experiments demonstrate superior reconstruction and curation quality under sparse panoramic inputs, while fine-tuning VLMs on Holi360 substantially improves spatial reasoning capabilities.",
+      "published": "2026-10-14T03:21:09Z",
+      "updated": "2026-10-14T03:21:09Z",
+      "version": 1,
+      "identifiers": {
+        "arxiv": [
+          "2610.19502"
+        ],
+        "doi": []
+      },
+      "url": "https://arxiv.org/abs/2610.19502",
+      "pdf": "https://arxiv.org/pdf/2610.19502",
+      "venue": "arXiv",
+      "comment": "",
+      "categories": [
+        "cs.CV"
+      ],
+      "imported": false,
+      "origin": "arxiv",
+      "first_seen": "2026-10-19T08:08:31Z",
+      "last_seen": "2026-10-19T08:08:31Z",
+      "classification": {
+        "bucket": "related",
+        "tracks": [
+          "GS"
+        ],
+        "task": "other",
+        "methods": [
+          "gaussian",
+          "geometry"
+        ],
+        "basis": "title+abstract",
+        "certainty": "needs-review",
+        "note": "自动关键词初筛;标签可能来自背景或对比描述,不代表已核实任务设置、实验条件或论文贡献。",
+        "evidence": [
+          {
+            "label": "gaussian",
+            "quote": "rs into reliable cross-view constraints and builds a coherent 3D Gaussian Splatting representation as 3D spatial memory. Adapted single-image and video priors then restore appearance"
+          },
+          {
+            "label": "geometry",
+            "quote": "quality bounds subsequent generation, our Correspondence-Guided Geometric Optimization converts feed-forward reconstruction priors into reliable cross-view constraints and"
+          },
+          {
+            "label": "GS",
+            "quote": "rs into reliable cross-view constraints and builds a coherent 3D Gaussian Splatting representation as 3D spatial memory. Adapted single-image and video priors then restore appearance"
+          }
+        ]
+      },
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": []
+    }
+  },
+  "queries": {
+    "unsupervised-pointcloud-seg": {
+      "query_hash": "92213064035cd303bdb9e8d8fde63f27666cbf56c8152ed8222cdf64fcd52c3c",
+      "completed_until": "2026-10-19T08:08:31Z",
+      "last_success": "2026-10-19T08:08:31Z"
+    },
+    "contrastive-learning": {
+      "query_hash": "df500156a463c480a2eb038a93e2493360cee533b2bac464b5b1ca9d2ecd1f61",
+      "completed_until": "2026-10-19T08:08:31Z",
+      "last_success": "2026-10-19T08:08:31Z"
+    },
+    "autonomous-driving": {
+      "query_hash": "7bf636a218a76f81768419d51e4b4bcd57e46f461033c76fa44fc8733a876962",
+      "completed_until": "2026-10-19T08:08:31Z",
+      "last_success": "2026-10-19T08:08:31Z"
+    },
+    "3d-gaussian": {
+      "query_hash": "2e99cb734e63685e5bbe44e68201bcdc123d8df343aa3573238b0e75430217cc",
+      "completed_until": "2026-10-19T08:08:31Z",
+      "last_success": "2026-10-19T08:08:31Z"
+    }
+  },
+  "events": [
+    {
+      "key": "254f2fb472875a23a72e3f31",
+      "kind": "discovered",
+      "paper_id": "arxiv:2610.23537",
+      "title": "PanoBench: A Panoptic Occupancy Prediction Benchmark for Autonomous Driving",
+      "at": "2026-10-19T08:08:31Z"
+    },
+    {
+      "key": "092c90b79947c925bf3f5a9b",
+      "kind": "discovered",
+      "paper_id": "arxiv:2610.22215",
+      "title": "FutureLift: Lifting Trajectory Proposals into Bidirectional Future Graphs for Motion Forecasting",
+      "at": "2026-10-19T08:08:31Z"
+    },
+    {
+      "key": "2cee26be602a33d316ab3a08",
+      "kind": "discovered",
+      "paper_id": "arxiv:2610.22143",
+      "title": "FALCON: FPGA-Accelerated Latency-Certifiable Occupancy Networks for Camera-Based Autonomous Driving",
+      "at": "2026-10-19T08:08:31Z"
+    },
+    {
+      "key": "2ccf562618469ed10f6b7750",
+      "kind": "discovered",
+      "paper_id": "arxiv:2610.22450",
+      "title": "DriveWorld3D Evidence Constrained 3D World Modeling and Generative Simulation for Real-World Autonomous Driving",
+      "at": "2026-10-19T08:08:31Z"
+    },
+    {
+      "key": "a021dd6bb3a440ce3b959338",
+      "kind": "discovered",
+      "paper_id": "arxiv:2610.21207",
+      "title": "SpaceCache: Intermediate Feature Reuse for Efficient Semantic Segmentation on Point Cloud Streams",
+      "at": "2026-10-19T08:08:31Z"
+    },
+    {
+      "key": "9a92aae8423238e2d2bc8d1b",
+      "kind": "discovered",
+      "paper_id": "arxiv:2610.18686",
+      "title": "RadarGSOcc: Doppler-Aware 3D Semantic Occupancy Prediction Using 4D Radar Tensor with Geometric-Semantic Feature Extraction",
+      "at": "2026-10-19T08:08:31Z"
+    },
+    {
+      "key": "abc3caa7440e844cfe6e1339",
+      "kind": "discovered",
+      "paper_id": "arxiv:2610.17688",
+      "title": "OccWAM: Occupancy World-Action Models with Joint Scene-to-Ego Flow Matching",
+      "at": "2026-10-19T08:08:31Z"
+    },
+    {
+      "key": "2055ce6b4b493e554d0540af",
+      "kind": "discovered",
+      "paper_id": "arxiv:2610.16906",
+      "title": "Mining Cross-Modal Perception Gaps in Autonomous Driving: When Camera and LiDAR Disagree",
+      "at": "2026-10-19T08:08:31Z"
+    },
+    {
+      "key": "ab27d129ed994d1b5de72bde",
+      "kind": "discovered",
+      "paper_id": "arxiv:2610.21668",
+      "title": "Edit4D: Editable 4D Scene Generation with Textual Control",
+      "at": "2026-10-19T08:08:31Z"
+    },
+    {
+      "key": "0c360dd7b546ee523a83cf64",
+      "kind": "discovered",
+      "paper_id": "arxiv:2610.21619",
+      "title": "Training-Free Target-Aware Refinement of 3D Gaussian Language Map",
+      "at": "2026-10-19T08:08:31Z"
+    },
+    {
+      "key": "62a86902d9ab824619e84d7f",
+      "kind": "discovered",
+      "paper_id": "arxiv:2610.19502",
+      "title": "Holi-Spatial 360: Generative Reconstruction from Sparse Panoramas for Spatial Rendering and Intelligence",
+      "at": "2026-10-19T08:08:31Z"
+    }
+  ],
   "revision_cursor": 0,
-  "runs": []
+  "runs": [
+    {
+      "at": "2026-10-19T08:08:31Z",
+      "status": "ok",
+      "counts": {
+        "new": 11,
+        "revised": 0,
+        "existing": 0,
+        "metadata": 0,
+        "unchanged": 11,
+        "conflict": 0
+      },
+      "sources": [
+        {
+          "source": "unsupervised-pointcloud-seg",
+          "start": "2026-10-12T08:08:31Z",
+          "end": "2026-10-19T08:08:31Z",
+          "backlog_days": 0,
+          "status": "ok",
+          "matched": 0
+        },
+        {
+          "source": "contrastive-learning",
+          "start": "2026-10-12T08:08:31Z",
+          "end": "2026-10-19T08:08:31Z",
+          "backlog_days": 0,
+          "status": "ok",
+          "matched": 0
+        },
+        {
+          "source": "autonomous-driving",
+          "start": "2026-10-12T08:08:31Z",
+          "end": "2026-10-19T08:08:31Z",
+          "backlog_days": 0,
+          "status": "ok",
+          "matched": 8
+        },
+        {
+          "source": "3d-gaussian",
+          "start": "2026-10-12T08:08:31Z",
+          "end": "2026-10-19T08:08:31Z",
+          "backlog_days": 0,
+          "status": "ok",
+          "matched": 3
+        },
+        {
+          "source": "known-revisions",
+          "status": "ok",
+          "checked": 11,
+          "total_known": 11
+        }
+      ],
+      "note": "新增指本站首次发现;修订另计;关键词初筛不等于全文审核。"
+    }
+  ],
+  "last_full_success": "2026-10-19T08:08:31Z",
+  "last_run": {
+    "at": "2026-10-19T08:08:31Z",
+    "status": "ok",
+    "counts": {
+      "new": 11,
+      "revised": 0,
+      "existing": 0,
+      "metadata": 0,
+      "unchanged": 11,
+      "conflict": 0
+    },
+    "sources": [
+      {
+        "source": "unsupervised-pointcloud-seg",
+        "start": "2026-10-12T08:08:31Z",
+        "end": "2026-10-19T08:08:31Z",
+        "backlog_days": 0,
+        "status": "ok",
+        "matched": 0
+      },
+      {
+        "source": "contrastive-learning",
+        "start": "2026-10-12T08:08:31Z",
+        "end": "2026-10-19T08:08:31Z",
+        "backlog_days": 0,
+        "status": "ok",
+        "matched": 0
+      },
+      {
+        "source": "autonomous-driving",
+        "start": "2026-10-12T08:08:31Z",
+        "end": "2026-10-19T08:08:31Z",
+        "backlog_days": 0,
+        "status": "ok",
+        "matched": 8
+      },
+      {
+        "source": "3d-gaussian",
+        "start": "2026-10-12T08:08:31Z",
+        "end": "2026-10-19T08:08:31Z",
+        "backlog_days": 0,
+        "status": "ok",
+        "matched": 3
+      },
+      {
+        "source": "known-revisions",
+        "status": "ok",
+        "checked": 11,
+        "total_known": 11
+      }
+    ],
+    "note": "新增指本站首次发现;修订另计;关键词初筛不等于全文审核。"
+  }
 }
