@@ -1,4 +1,4 @@
-"""跑一轮自动发现:抓 arXiv -> 合并去重 -> 写 data/store.json。
+"""跑一轮自动发现:抓 arXiv / DBLP / OpenAlex -> 合并去重 -> 写 data/store.json。
 
 退出码:0 = ok/partial(部分来源失败只在站点状态栏提示),2 = 整轮失败。
 """

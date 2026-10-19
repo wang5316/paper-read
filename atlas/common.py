@@ -25,6 +25,8 @@ _DOI = re.compile(r"^10\.\d{4,9}/\S+$")
 _ARXIV_DOI = re.compile(r"^10\.48550/arxiv\.(.+)$", re.I)
 _ARXIV_NEW = re.compile(r"(\d{4}\.\d{4,5})(?:v(\d+))?$")
 _ARXIV_OLD = re.compile(r"([a-z\-]+(?:\.[A-Z]{2})?/\d{7})(?:v(\d+))?$")
+_DBLP_STREAM = re.compile(r"^[a-z0-9_.-]+/[a-z0-9_.-]+(?:/[a-z0-9_.-]+)*$")
+_ISSN = re.compile(r"^\d{4}-?\d{3}[\dXx]$")
 
 
 # --------------------------------------------------------------------------- 时间
@@ -126,10 +128,42 @@ def strip_version(raw) -> str:
     return _TRAILING_VERSION.sub("", str(raw or "").strip())
 
 
+def arxiv_from_link(raw):
+    """只从明确指向 arXiv 的链接/DOI 提取编号,返回 ``(编号, 版本)``。
+
+    不能直接对任意 DOI 调 ``arxiv_ref``:普通 DOI 的尾段(如
+    ``10.1109/cvpr52733.2024.01234``)也长得像新式 arXiv 号,会被误认。
+    这里要求 arxiv.org 主机、``arXiv:`` 前缀或 ``10.48550/arXiv.*`` DOI。
+    """
+    text = str(raw or "").strip()
+    if not text:
+        return "", 0
+    if text.lower().startswith("arxiv:"):
+        return arxiv_ref(text)
+    doi = doi_id(text)
+    if doi:
+        hit = _ARXIV_DOI.match(doi)
+        return arxiv_ref(hit.group(1)) if hit else ("", 0)
+    try:
+        host = (urlsplit(text).hostname or "").lower()
+    except ValueError:
+        return "", 0
+    if host == "arxiv.org" or host.endswith(".arxiv.org"):
+        return arxiv_ref(text)
+    return "", 0
+
+
 def doi_id(raw):
     """返回规范化 DOI,非法则空串。"""
     text = str(raw or "").strip().lower()
-    for prefix in ("https://doi.org/", "http://doi.org/", "doi:"):
+    for prefix in (
+        "https://doi.org/",
+        "http://doi.org/",
+        "https://dx.doi.org/",
+        "http://dx.doi.org/",
+        "dx.doi.org/",
+        "doi:",
+    ):
         if text.startswith(prefix):
             text = text[len(prefix) :]
     return text if _DOI.match(text) else ""
@@ -220,6 +254,7 @@ def load_config(path=None) -> dict:
         raise ConfigError("arxiv.revision_batch_size must be within 0..100")
 
     seen = set()
+    arxiv_enabled = False
     for query in arxiv.get("queries") or []:
         qid = str(query.get("id") or "").strip()
         if not qid:
@@ -229,8 +264,89 @@ def load_config(path=None) -> dict:
         if not str(query.get("query") or "").strip():
             raise ConfigError(f"query {qid} has an empty search expression")
         seen.add(qid)
-    if not seen:
-        raise ConfigError("config.arxiv.queries is empty")
+        if query.get("enabled") is not False:
+            arxiv_enabled = True
+
+    dblp = config.setdefault("dblp", {})
+    dblp_enabled = False
+    if dblp:
+        dblp_interval = float(dblp.get("request_interval_seconds", 2.0))
+        if dblp_interval < 0.5:
+            raise ConfigError("dblp.request_interval_seconds must be >= 0.5")
+        dblp_size = int(dblp.get("page_size", 500))
+        if not 1 <= dblp_size <= 1000:
+            raise ConfigError("dblp.page_size must be within 1..1000")
+        if int(dblp.get("max_pages_per_venue_year", 20)) < 1:
+            raise ConfigError("dblp.max_pages_per_venue_year must be >= 1")
+        if not 0 <= int(dblp.get("lookback_years", 1)) <= 20:
+            raise ConfigError("dblp.lookback_years must be within 0..20")
+        if float(dblp.get("recheck_completed_years_days", 30)) < 0:
+            raise ConfigError("dblp.recheck_completed_years_days must be >= 0")
+        venue_ids = set()
+        for venue in dblp.get("venues") or []:
+            vid = str(venue.get("id") or "").strip()
+            if not vid:
+                raise ConfigError("every dblp venue needs a non-empty id")
+            if vid in venue_ids:
+                raise ConfigError(f"duplicate dblp venue id: {vid}")
+            stream = str(venue.get("stream") or "").strip()
+            if not _DBLP_STREAM.match(stream):
+                raise ConfigError(
+                    f"dblp venue {vid} needs a stream id such as conf/cvpr, got {stream!r}"
+                )
+            venue_ids.add(vid)
+            if venue.get("enabled") is not False:
+                dblp_enabled = True
+        if dblp.get("enabled") is False:
+            dblp_enabled = False
+        if not venue_ids and dblp.get("enabled") is not False:
+            raise ConfigError("config.dblp.venues is empty")
+
+    openalex = config.setdefault("openalex", {})
+    openalex_enabled = False
+    if openalex:
+        if float(openalex.get("request_interval_seconds", 1.0)) < 0.1:
+            raise ConfigError("openalex.request_interval_seconds must be >= 0.1")
+        if not 1 <= int(openalex.get("page_size", 200)) <= 200:
+            raise ConfigError("openalex.page_size must be within 1..200")
+        if int(openalex.get("max_pages_per_journal", 30)) < 1:
+            raise ConfigError("openalex.max_pages_per_journal must be >= 1")
+        if float(openalex.get("initial_lookback_days", 30)) <= 0:
+            raise ConfigError("openalex.initial_lookback_days must be > 0")
+        if float(openalex.get("max_window_days", 30)) <= 0:
+            raise ConfigError("openalex.max_window_days must be > 0")
+        if float(openalex.get("overlap_days", 7)) < 0:
+            raise ConfigError("openalex.overlap_days must be >= 0")
+        types = openalex.get("types")
+        if types is not None and not isinstance(types, list):
+            raise ConfigError("openalex.types must be a list")
+        journal_ids = set()
+        for journal in openalex.get("journals") or []:
+            jid = str(journal.get("id") or "").strip()
+            if not jid:
+                raise ConfigError("every openalex journal needs a non-empty id")
+            if jid in journal_ids:
+                raise ConfigError(f"duplicate openalex journal id: {jid}")
+            issns = journal.get("issn") or []
+            if isinstance(issns, str):
+                issns = [issns]
+            for issn in issns:
+                if not _ISSN.match(str(issn or "").strip()):
+                    raise ConfigError(
+                        f"openalex journal {jid} has an invalid ISSN: {issn!r}"
+                    )
+            if not issns and not str(journal.get("source_id") or "").strip():
+                raise ConfigError(f"openalex journal {jid} needs an issn or source_id")
+            journal_ids.add(jid)
+            if journal.get("enabled") is not False:
+                openalex_enabled = True
+        if openalex.get("enabled") is False:
+            openalex_enabled = False
+        if not journal_ids and openalex.get("enabled") is not False:
+            raise ConfigError("config.openalex.journals is empty")
+
+    if not (arxiv_enabled or dblp_enabled or openalex_enabled):
+        raise ConfigError("config has no enabled sources (arxiv / dblp / openalex)")
 
     classify = config.setdefault("classify", DEFAULT_CLASSIFY)
     if not classify.get("scope", {}).get("patterns"):

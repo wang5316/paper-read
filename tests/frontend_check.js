@@ -99,6 +99,10 @@ sandbox.window = { ATLAS: undefined, addEventListener() {}, document, location }
 const context = vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync(path.join(dist, "data.js"), "utf8"), context, { filename: "data.js" });
 const payload = sandbox.window.ATLAS;
+// 注入一条 skipped 来源,验证前端不会把「跳过」误画成「失败」。
+payload.status.sources = (payload.status.sources || []).concat([
+  { source: "dblp:eccv", status: "skipped", year: 2025, reason: "completed recently" },
+]);
 vm.runInContext(fs.readFileSync(path.join(dist, "app.js"), "utf8"), context, { filename: "app.js" });
 
 const failures = [];
@@ -121,12 +125,22 @@ if (payload.papers.length === 0) {
   expect("抓取状态文案", store["health-title"].textContent === "最近一轮抓取成功", store["health-title"].textContent);
   expect("库内文献数", store["library-count"].textContent === String(payload.papers.length), store["library-count"].textContent);
   expect("核心方向计数是数字", /^\d+$/.test(store["core-count"].textContent), store["core-count"].textContent);
-  expect("卡片渲染出题名", store["papers"].innerHTML.includes(payload.papers[0].title));
+  expect(
+    "卡片渲染出题名",
+    payload.papers.some((paper) => store["papers"].innerHTML.includes(paper.title))
+  );
   expect("卡片渲染出研究方向标签", /chip track/.test(store["papers"].innerHTML));
   expect("结果条", /找到 \d+ 篇/.test(store["results"].textContent), store["results"].textContent);
   const firstGroup = (payload.topics[0] && payload.topics[0].group) || "";
   expect("专题分组", Boolean(firstGroup) && store["topic-groups"].innerHTML.includes(firstGroup), firstGroup);
   expect("来源状态", store["sources"].innerHTML.includes(payload.status.sources[0].source));
+  expect("跳过状态不算失败", store["sources"].innerHTML.includes("已跳过"));
+  expect(
+    "会议/期刊出处标签",
+    payload.papers.some((paper) => paper.venue && paper.venue.toLowerCase() !== "arxiv")
+      ? /chip venue/.test(store["papers"].innerHTML)
+      : true
+  );
   expect("事件区", /新收录/.test(store["events"].innerHTML));
   expect("方向下拉已填充", store["track"].children.length >= 4, "children=" + store["track"].children.length);
 
@@ -139,6 +153,7 @@ if (payload.papers.length === 0) {
     });
     const detail = store["detail-body"].innerHTML;
     expect("详情页标题", detail.includes(withAI.title));
+    expect("详情页收录来源", detail.includes("收录来源"));
     expect("详情页 AI 五段", detail.includes("① 解决的问题") && detail.includes("⑤ 对后续读者的启发"));
     expect("引文块带页码链接", /blockquote class="evidence"[\s\S]*PDF p\.1/.test(detail));
     expect("详情页审核入口", detail.includes("人工审核") && detail.includes("issues/new"));

@@ -1,6 +1,6 @@
 # 部署到 GitHub Pages(每日云端自动更新)
 
-目标:代码推到 GitHub 后,**每天定时在云端抓一次 arXiv、重建站点、自动发布**,你的电脑不用开机。
+目标:代码推到 GitHub 后,**每天定时在云端抓一次 arXiv / DBLP / OpenAlex、重建站点、自动发布**,你的电脑不用开机。
 
 整条链路只有一个 workflow:
 
@@ -23,12 +23,12 @@ daily.yml  →  update(抓取) → enrich(可选 AI) → build(建站) → commi
 
 ## 1. 先改三处占位符
 
-打开 `config.json`,把 `YOUR-NAME` 换成你的用户名(第 4、6、193 行):
+打开 `config.json`,把 `YOUR-NAME` 换成你的用户名:
 
 ```jsonc
-"site_url":   "https://YOUR-NAME.github.io/observatory",     // 第 4 行:改成你的 Pages 地址
-"user_agent": "observatory/1.0 (+https://github.com/YOUR-NAME/observatory)",  // 第 6 行:arXiv 要求 UA 带联系方式
-"review": { "repo": "YOUR-NAME/observatory", ... }            // 第 193 行:不用网页审核就改成 ""
+"site_url":   "https://YOUR-NAME.github.io/observatory",     // 你的 Pages 地址
+"user_agent": "observatory/1.0 (+https://github.com/YOUR-NAME/observatory)",  // arXiv/OpenAlex 要求 UA 带联系方式
+"review": { "repo": "YOUR-NAME/observatory", ... }            // 不用网页审核就改成 ""
 ```
 
 - `site_url` 只影响 RSS 里的链接和页面元信息,填错站点也能跑,但订阅链接会错。
@@ -90,9 +90,11 @@ git push -u origin main
 | `days` | 留空 | 留空=按游标增量;想一次回补就填 `90`(仍按 30 天一个窗口逐块推进) |
 | `enrich_limit` | 留空 | 本轮最多生成几篇 AI 解读;留空=用 `config.json` 里的上限 |
 
-跑完大约 2–5 分钟(不配 AI 时通常 1 分钟内)。成功后打开 `https://YOUR-NAME.github.io/observatory/`。
+不配 AI 时通常 2–8 分钟;首次运行还要回看 DBLP 的当年 + 上一年会议数据
+(`dblp.lookback_years`),可能更久。成功后打开 `https://YOUR-NAME.github.io/observatory/`。
 
-首次运行会抓最近 30 天(`arxiv.initial_lookback_days`),之后每天只抓增量。
+首次运行:arXiv 与 OpenAlex 抓最近 30 天(`initial_lookback_days`),DBLP 抓当年和上一年;
+之后每天只抓增量,DBLP 往年数据默认每 30 天复查一次。
 
 ---
 
@@ -138,6 +140,16 @@ Settings → Secrets and variables → Actions → Variables
 成本闸门在 `config.json` 的 `llm` 段:`max_per_run`(每轮最多几篇)、`max_per_utc_day`(每天上限),
 发请求前先记账,同一版本只生成一次。**想彻底关掉**:把 `llm.enabled` 改成 `false`。
 
+**OpenAlex(可选,推荐配):**
+
+```
+Settings → Secrets and variables → Actions
+    Secrets:   OPENALEX_API_KEY = ...        # https://openalex.org/settings/api 免费申请
+    Variables: OPENALEX_MAILTO   = you@example.com
+```
+
+不配也能抓,但会落在更严格的公共限流池里。DBLP 使用官方 SPARQL 端点,不需要密钥。
+
 ---
 
 ## 7. 跑完怎么验证是真的成功了
@@ -145,9 +157,11 @@ Settings → Secrets and variables → Actions → Variables
 按顺序看这四处,能定位 90% 的问题:
 
 1. **Actions 列表**:最后一次 daily 是绿色。
-2. **Step Summary**(运行详情页底部):有「本轮抓取状态」表格,每个来源标 `ok` / `failed`。
-   - `failed` + `HTTP 429` → 被 arXiv 限流,把 `arxiv.request_interval_seconds` 调大到 6–10。
-   - `failed` + `network` → 运行环境网络问题,重跑即可。
+2. **Step Summary**(运行详情页底部):有「本轮抓取状态」表格,每个来源标 `ok` / `failed` / `skipped`。
+   - `failed` + `HTTP 429` → 被 arXiv / OpenAlex 限流,把对应 `request_interval_seconds` 调大。
+   - `failed` + `network` / `Timeout` → 运行环境网络问题,重跑即可。
+   - `skipped` + DBLP 往年 → 最近 30 天已经完整抓过,本轮按间隔跳过,不是失败。
+   - `ok` 但 `stored` 远小于 `matched` → 被 `scope_prefilter` 过滤,属正常。
 3. **仓库里的 `data/store.json`**:有 `last_full_success` 时间戳,`events` 数组里有 `discovered` 条目。
 4. **站点首页右上角状态卡**:显示「最近一轮抓取成功」+ 新发现的篇数。
    - 显示「抓取失败 · 保留已有库」说明抓取挂了,但站点仍用旧数据构建(这是故意设计的)。
@@ -163,7 +177,9 @@ Settings → Secrets and variables → Actions → Variables
 | 网页是旧内容 | 部署 job 被跳过 | 看 `build` job 的 `pages_ready` 输出是否为 false |
 | 报 `remote: Permission denied` | 仓库有分支保护,或 workflow 权限被收紧 | Settings → Actions → General → Workflow permissions 选 "Read and write permissions" |
 | 报 `! [rejected]`(push 冲突) | 你本地同时改了 `data/store.json` | workflow 已经会 `git pull --rebase --autostash`;实在冲突就本地 `git pull --rebase` 后重跑 |
-| 每天都是 0 篇 | 检索式太窄,或 arXiv 分类不对 | 用 `days=30` 手动跑一次回补;检查 `arxiv.queries` 的布尔式 |
+| 每天都是 0 篇 | 检索式太窄、预筛太严,或类别不对 | 用 `days=30` 手动回补;检查 `arxiv.queries`、`dblp.venues`、`openalex.journals`;必要时把 `scope_prefilter` 设为 `false` |
+| DBLP 报 `pagination incomplete` / `count changed` | 抓取过程中 DBLP 数据更新,或超过页数安全上限 | 重跑;持续出现则调大 `dblp.max_pages_per_venue_year` |
+| OpenAlex 报 `above the configured ... safety limit` | 期刊窗口内文章太多 | 减小 `openalex.max_window_days`,或调大 `max_pages_per_journal` |
 | 首页一直「正在读取状态」 | `data.js` 没生成(构建失败) | 看 build 步骤日志,通常是 `web/` 三个文件缺失 |
 
 ---
@@ -175,7 +191,7 @@ cd observatory
 python scripts/demo.py                      # 离线演示,写 .demo/,不碰 data/(看一眼版式)
 python -m http.server -d dist 8000          # 打开 http://127.0.0.1:8000
 
-python -m unittest discover -s tests -v     # 30 个离线测试
+python -m unittest discover -s tests -v     # 50+ 个离线测试
 node tests/frontend_check.js dist           # 前端功能检查(需要 node)
 ```
 
@@ -194,6 +210,9 @@ node tests/frontend_check.js dist           # 前端功能检查(需要 node)
 | Issue 审核工作流 | 删 `.github/workflows/review.yml` | 不再响应 Issue(配合上一行) |
 | 独立测试 workflow | 删 `.github/workflows/tests.yml` | 测试只在 daily 第一步跑(仍然有防护) |
 | 版本巡检 | `config.arxiv.revision_batch_size = 0` | 不再复查已有论文是否出了新版 |
+| DBLP 会议抓取 | `config.dblp.enabled = false` | 不再抓会议题录 |
+| OpenAlex 期刊抓取 | `config.openalex.enabled = false` | 不再抓期刊题录 |
+| 新来源范围预筛 | `config.dblp.scope_prefilter = false` / `config.openalex.scope_prefilter = false` | 新记录不过领域词表,库会变大但召回更全 |
 | 首页专题卡片 | 删掉 `config.topics` 里的条目 | 一篇论文可属多个专题的分组视图消失 |
 | 研究方向标签(DA/DG/…) | 精简 `config.classify.tracks` | 注意:同步修改 `topics` 里引用的 id,否则启动即报错 |
 | 既有题录(seed) | 保持 `data/seed.json` 为 `[]` | 无影响 |

@@ -98,6 +98,30 @@ def _retry_after(exc):
         return None
 
 
+def _journal_ref(raw) -> str:
+    """校验 arXiv 的 journal_ref 字段。
+
+    这个字段是作者自由填写的,经常被写成引用串或备注,例如:
+      "Copilot4D: Learning Unsupervised World Models ... arXiv:2311.01017, 2023"
+      "Accepted at CVPR 2025; see also arXiv:2401.00001"
+    这类值当期刊名会污染 venue 与「期刊与会议论文」专题,所以只接受
+    「像刊物名」的短文本:不含 arXiv/doi 引用痕迹、不含年份逗号后缀、长度受限。
+    """
+    text = " ".join(str(raw or "").split())
+    if not text:
+        return ""
+    lowered = text.lower()
+    if "arxiv:" in lowered or "arxiv.org" in lowered or "doi:" in lowered:
+        return ""
+    if re.search(r"\b(19|20)\d{2}\s*[;,.、]\s*\d{0,2}\s*$", text):
+        return ""
+    if len(text) > 90 or text.count(".") > 1:
+        return ""
+    if re.search(r"\b(accepted|submitted|to appear|under review|preprint)\b", lowered):
+        return ""
+    return text
+
+
 def parse_entry(entry) -> dict:
     raw_id = _text(entry.find(A + "id"))
     aid, version = arxiv_ref(raw_id)
@@ -122,7 +146,7 @@ def parse_entry(entry) -> dict:
         "identifiers": {"arxiv": [aid], "doi": [doi] if doi else []},
         "url": ARXIV_ABS + aid,
         "pdf": ARXIV_PDF + aid,
-        "venue": _text(entry.find(X + "journal_ref")) or "arXiv",
+        "venue": _journal_ref(_text(entry.find(X + "journal_ref"))) or "arXiv",
         "comment": _text(entry.find(X + "comment")),
         "categories": [node.get("term") for node in entry.findall(A + "category") if node.get("term")],
     }

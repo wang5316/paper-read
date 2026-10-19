@@ -309,6 +309,7 @@ main, .hero, .stats, .topics, .library, .activity,
   letter-spacing: .2px;
 }
 .chip.track { background: var(--accent-soft); color: var(--accent); }
+.chip.venue { background: #edf3ee; color: #3f6b4f; }
 .chip.ai { background: #eef2fa; color: #3f5f8f; }
 .chip.abstract { background: #fbf3e6; color: var(--warn); }
 .chip.kind { background: var(--accent-soft); color: var(--accent); }

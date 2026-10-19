@@ -74,6 +74,9 @@ jobs:
         id: update
         if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.refresh) }}
         continue-on-error: true
+        env:
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+          OPENALEX_MAILTO: ${{ vars.OPENALEX_MAILTO }}
         run: |
           ARGS=""
           if [ -n "${{ inputs.days }}" ]; then ARGS="--days ${{ inputs.days }}"; fi

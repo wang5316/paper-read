@@ -52,10 +52,24 @@ def main(argv=None) -> int:
 
     print("| 来源 | 状态 | 细节 |\n|---|---|---|")
     for source in report.get("sources") or []:
-        detail = source.get("error") or f"matched {source.get('matched', 0)}"
+        status = source.get("status")
+        if status == "failed":
+            detail = source.get("error") or "failed"
+        elif status == "skipped":
+            detail = source.get("reason") or "skipped"
+        else:
+            bits = []
+            if source.get("year"):
+                bits.append(str(source["year"]))
+            bits.append(f"matched {source.get('matched', 0)}")
+            if "stored" in source:
+                bits.append(f"stored {source.get('stored', 0)}")
+            if source.get("skipped"):
+                bits.append(f"prefiltered {source.get('skipped')}")
+            detail = ";".join(bits)
         if source.get("backlog_days"):
             detail += f";还有 {source['backlog_days']} 天待回查"
-        print(f"| `{source.get('source')}` | {source.get('status')} | {detail} |")
+        print(f"| `{source.get('source')}` | {status} | {detail} |")
 
     llm = store.get("llm_last_run")
     if llm:

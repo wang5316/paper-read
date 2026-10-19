@@ -47,6 +47,85 @@
     ]
   },
 
+  "dblp": {
+    "enabled": true,
+    "request_interval_seconds": 2.0,
+    "timeout_seconds": 120,
+    "attempts": 4,
+    "page_size": 500,
+    "max_pages_per_venue_year": 20,
+    "lookback_years": 1,
+    "recheck_completed_years_days": 30,
+    "scope_prefilter": true,
+    "require_track": true,
+    "venues": [
+      { "id": "cvpr", "name": "CVPR", "stream": "conf/cvpr", "years": [2025, 2026], "enabled": true },
+      { "id": "iccv", "name": "ICCV", "stream": "conf/iccv", "years": [2025], "enabled": true },
+      { "id": "eccv", "name": "ECCV", "stream": "conf/eccv", "years": [2024, 2026], "enabled": true },
+      { "id": "3dv", "name": "3DV", "stream": "conf/3dim", "years": [2025, 2026], "enabled": true },
+      { "id": "neurips", "name": "NeurIPS", "stream": "conf/nips", "years": [2025], "enabled": true }
+    ]
+  },
+
+  "openalex": {
+    "enabled": true,
+    "request_interval_seconds": 1.0,
+    "timeout_seconds": 60,
+    "attempts": 5,
+    "page_size": 200,
+    "max_pages_per_journal": 30,
+    "initial_lookback_days": 30,
+    "overlap_days": 7,
+    "max_window_days": 30,
+    "types": ["article", "review"],
+    "scope_prefilter": true,
+    "require_track": true,
+    "journals": [
+      {
+        "id": "tpami",
+        "name": "IEEE TPAMI",
+        "source_id": "S199944782",
+        "issn": ["0162-8828", "1939-3539"],
+        "enabled": true
+      },
+      {
+        "id": "ijcv",
+        "name": "IJCV",
+        "source_id": "S25538012",
+        "issn": ["0920-5691", "1573-1405"],
+        "enabled": true
+      },
+      {
+        "id": "tvcg",
+        "name": "IEEE TVCG",
+        "source_id": "S84775595",
+        "issn": ["1077-2626", "1941-0506"],
+        "enabled": true
+      },
+      {
+        "id": "tip",
+        "name": "IEEE TIP",
+        "source_id": "S4210173141",
+        "issn": ["1057-7149", "1941-0042"],
+        "enabled": true
+      },
+      {
+        "id": "ral",
+        "name": "IEEE RA-L",
+        "source_id": "S4210169774",
+        "issn": ["2377-3766", "2377-3774"],
+        "enabled": true
+      },
+      {
+        "id": "isprs",
+        "name": "ISPRS J. P&RS",
+        "source_id": "S173339282",
+        "issn": ["0924-2716", "1872-8235"],
+        "enabled": true
+      }
+    ]
+  },
+
   "classify": {
     "scope": {
       "id": "3d",
@@ -143,7 +222,8 @@
           "gaussian primitives",
           "gaussian field",
           "\\b3dgs\\b"
-        ]
+        ],
+        "requires": "semantic|segmentation|scene understanding|language|open[ -]vocab|label|grounding|instance|panoptic|edit|object|detection|understanding"
       }
     ],
     "methods": [

@@ -22,9 +22,13 @@ PUBLIC_FIELDS = (
     "title",
     "authors",
     "published",
+    "published_precision",
     "updated",
     "version",
     "venue",
+    "origin",
+    "sources",
+    "categories",
     "identifiers",
     "first_seen",
 )
@@ -165,7 +169,8 @@ def to_ris(papers) -> str:
 
     blocks = []
     for paper in papers:
-        lines = ["TY  - JOUR", "TI  - " + clean(paper.get("title"))]
+        conference = "Inproceedings" in (paper.get("categories") or [])
+        lines = ["TY  - " + ("CP" if conference else "JOUR"), "TI  - " + clean(paper.get("title"))]
         for author in paper.get("authors") or []:
             lines.append("AU  - " + clean(author))
         published = clean(paper.get("published"))
@@ -241,6 +246,28 @@ def _feed(config, papers, events) -> str:
     return "".join(parts)
 
 
+def _source_detail(source) -> str:
+    status = source.get("status")
+    if status == "failed":
+        return str(source.get("error") or "failed")
+    if status == "skipped":
+        return str(source.get("reason") or "skipped")
+    bits = []
+    for key in ("year", "journal"):
+        if source.get(key) and str(source[key]) not in bits:
+            bits.append(str(source[key]))
+    bits.append(f"matched {source.get('matched', 0)}")
+    if "stored" in source:
+        bits.append(f"stored {source.get('stored', 0)}")
+    if source.get("skipped"):
+        bits.append(f"prefiltered {source.get('skipped')}")
+    if source.get("checked") is not None:
+        bits.append(f"checked {source.get('checked')}")
+    if source.get("backlog_days"):
+        bits.append(f"{source['backlog_days']}d backlog")
+    return " · ".join(bits)
+
+
 def _digest_md(config, papers, events, report) -> str:
     lines = [f"# {config.get('name_zh') or config.get('name')} · 运行摘要", ""]
     status = (report or {}).get("status", "not-run")
@@ -265,8 +292,9 @@ def _digest_md(config, papers, events, report) -> str:
     lines.append("")
     lines.append("## 来源状态")
     for source in (report or {}).get("sources") or []:
-        detail = source.get("error") or f"matched {source.get('matched', 0)}"
-        lines.append(f"- `{source.get('source')}` : {source.get('status')} · {detail}")
+        lines.append(
+            f"- `{source.get('source')}` : {source.get('status')} · {_source_detail(source)}"
+        )
     return "\n".join(lines) + "\n"
 
 

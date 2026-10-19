@@ -62,6 +62,13 @@ const ROLE_LABELS = {
 const SCOPE_LABEL = { "pdf-evidence": "arXiv 全文 PDF", "oa-pdf": "开放获取全文 PDF" };
 const OPEN_KIND = { limitation: "作者承认的局限", "future-work": "作者提出的未来方向" };
 const EVENT_KIND = { discovered: "新收录", revised: "新版本", "metadata-updated": "题录更新" };
+const ORIGINS = { arxiv: "arXiv", dblp: "DBLP", openalex: "OpenAlex", "curated-seed": "策展题录" };
+const SOURCE_STATUS = {
+  ok: ["成功", "good"],
+  failed: ["失败", "bad"],
+  skipped: ["已跳过", "muted"],
+};
+const originLabel = (value) => ORIGINS[value] || value || "";
 
 let favorites = new Set();
 try {
@@ -90,6 +97,21 @@ const STATUS_NAMES = {
   partial: "部分来源需要检查",
   failed: "抓取失败 · 保留已有库",
 };
+
+function sourceDetail(source) {
+  if (source.status === "failed") return source.error || "";
+  if (source.status === "skipped") return source.reason || "";
+  const bits = [];
+  if (source.year) bits.push(`${source.year} 年`);
+  if (source.matched !== undefined) bits.push(`匹配 ${source.matched}`);
+  if (source.stored !== undefined) bits.push(`入库 ${source.stored}`);
+  if (source.skipped) bits.push(`范围外 ${source.skipped}`);
+  if (source.checked !== undefined) {
+    bits.push(`巡检 ${source.checked}${source.total_known ? `/${source.total_known}` : ""}`);
+  }
+  if (source.backlog_days) bits.push(`积压 ${source.backlog_days} 天待回查`);
+  return bits.join(" · ");
+}
 
 function renderHeader() {
   const status = D.status || {};
@@ -208,6 +230,10 @@ function render() {
       paper.title,
       paper.id,
       paper.abstract,
+      paper.venue,
+      paper.origin,
+      ...(paper.sources || []),
+      ...(paper.categories || []),
       ...(paper.authors || []),
       ...(classification.methods || []),
       ...((paper.identifiers || {}).arxiv || []),
@@ -240,6 +266,11 @@ function render() {
           ${paper.ai_draft ? '<span class="chip ai">AI 解读</span>' : ""}
           ${paper.abstract && !paper.ai_draft ? '<span class="chip abstract">仅摘要</span>' : ""}
           <span class="chip">${esc(TASKS[classification.task] || "待核对")}</span>
+          ${
+            paper.venue && paper.venue.toLowerCase() !== "arxiv"
+              ? `<span class="chip venue">${esc(paper.venue)}</span>`
+              : ""
+          }
           <span class="muted">${esc(date(paper.published))}</span>
         </div>
         <h3>${esc(paper.title)}</h3>
@@ -405,8 +436,14 @@ function showPaper(id) {
     <div class="detailmeta">
       <b>研究方向:</b>${esc((classification.tracks || []).join(" / ") || "待确认")}
       <b>任务:</b>${esc(TASKS[classification.task] || "待确认")}<br>
-      <b>题录日期:</b>${esc(paper.published || "未提供")}
+      <b>发表出处:</b>${esc(paper.venue || "未提供")}
       <b>版本:</b>${esc(paper.version || "待核对")}<br>
+      <b>题录日期:</b>${esc(paper.published || "未提供")}${
+        paper.published_precision === "year" ? "(仅精确到年)" : ""
+      }<br>
+      <b>收录来源:</b>${esc(
+        (paper.sources || [paper.origin]).filter(Boolean).map(originLabel).join(" / ") || "未提供"
+      )}<br>
       <b>本站首次发现:</b>${esc(paper.first_seen ? time(paper.first_seen) : "既有导入题录")}<br>
       <b>阅读状态:</b>${esc(STATES[paper.review_status] || paper.review_status)}<br>
       ${link(paper, "打开论文来源 ↗")}
@@ -431,12 +468,13 @@ function downloadRIS(papers, name) {
   const ris = papers
     .map((paper) =>
       [
-        "TY  - JOUR",
+        "TY  - " + ((paper.categories || []).includes("Inproceedings") ? "CP" : "JOUR"),
         "TI  - " + clean(paper.title),
         ...(paper.authors || []).map((author) => "AU  - " + clean(author)),
         ...(paper.published ? ["PY  - " + clean(paper.published.slice(0, 4))] : []),
         ...((paper.identifiers || {}).doi || []).slice(0, 1).map((doi) => "DO  - " + clean(doi)),
         ...(validURL(paper.url) ? ["UR  - " + validURL(paper.url)] : []),
+        ...(paper.venue ? ["JO  - " + clean(paper.venue)] : []),
         "ER  - ",
         "",
       ].join("\n")
@@ -499,13 +537,13 @@ $("detail").addEventListener("click", (event) => {
 
 $("sources").innerHTML =
   (D.status.sources || [])
-    .map(
-      (source) => `<div class="source"><b>${esc(source.source)}</b><span class="${
-        source.status === "ok" ? "good" : "bad"
-      }">${source.status === "ok" ? "成功" : "失败"}${
-        source.backlog_days ? " · 仍有日期待回查" : ""
-      }</span></div>${source.error ? `<p class="muted">${esc(source.error)}</p>` : ""}`
-    )
+    .map((source) => {
+      const [label, cls] = SOURCE_STATUS[source.status] || [source.status || "未知", "muted"];
+      const detail = sourceDetail(source);
+      return `<div class="source"><b>${esc(source.source)}</b><span class="${cls}">${esc(
+        label
+      )}</span></div>${detail ? `<p class="muted">${esc(detail)}</p>` : ""}`;
+    })
     .join("") ||
   '<p class="muted">还没有抓取记录。跑一次 GitHub Actions 或 python scripts/update.py 后,这里会显示每个查询的状态。</p>';
 

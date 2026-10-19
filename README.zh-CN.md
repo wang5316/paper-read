@@ -1,7 +1,8 @@
 # 文献观察站 · Literature Observatory
 
-一个「活的」论文观察站:每天抓取指定研究方向的 arXiv 新论文,自动去重与分类,
-生成静态网站 + RSS + RIS,并把**抓取是否真的成功**如实记录下来。
+一个「活的」论文观察站:每天抓取指定研究方向的 arXiv 预印本、DBLP 会议论文与
+OpenAlex 期刊文章,自动去重与分类,生成静态网站 + RSS + RIS,并把
+**抓取是否真的成功**如实记录下来。
 
 它不是论文推荐系统 —— 自动分类只是检索线索,人工审核与 AI 解读都带边界声明。
 
@@ -10,9 +11,10 @@
 ## 1. 三条核心设计
 
 **① 游标与「成功」强绑定**
-每个检索式各自持有一个 `completed_until` 游标,只有整窗请求**完整成功**(含分页校验)才前移。
-拿不到 `totalResults`、中间页为空、跨页重复 ID、翻页无进展 —— 统统算失败,而不是「0 条结果」。
-所以 `matched=0 && status=ok` 才能说「这段时间真的没有新论文」。
+arXiv 每个检索式、OpenAlex 每个期刊各自持有 `completed_until` 游标,只有整窗请求
+**完整成功**(含分页校验)才前移;DBLP 按「会议 × 年份」记状态,COUNT 与分页条数
+对不上就不写成功。拿不到总数、中间页为空、跨页重复 ID、翻页无进展 —— 统统算失败,
+而不是「0 条结果」。所以 `matched=0 && status=ok` 才能说「这段时间真的没有新论文」。
 
 **② 身份靠强标识,标题只报警不合并**
 `identity_keys()` 产出 `arxiv:<id>`(去版本号)与 `doi:<doi>`(含 `10.48550/arxiv.*` 反推)两类键。
@@ -51,7 +53,7 @@ python -m http.server -d dist 8000   # 打开 http://127.0.0.1:8000
 
 ```bash
 pip install -r requirements.txt
-python scripts/update.py          # 抓 arXiv,写 data/store.json
+python scripts/update.py          # 抓 arXiv + DBLP + OpenAlex,写 data/store.json
 python scripts/enrich.py          # 可选:生成 AI 解读(需要 LLM_API_KEY)
 python scripts/build.py           # 生成 dist/
 ```
@@ -60,7 +62,7 @@ python scripts/build.py           # 生成 dist/
 
 **本地起个静态服务:** `python -m http.server -d dist 8000`
 
-**跑测试:** `python -m unittest discover -s tests -v`(30 个,全部离线,不需要网络与密钥)
+**跑测试:** `python -m unittest discover -s tests -v`(50+ 个,全部离线,不需要网络与密钥)
 
 **前端功能检查:** `python scripts/demo.py && node tests/frontend_check.js dist`
 (在 Node 里用一个极简 DOM 桩真跑 `app.js`:渲染卡片、打开详情、搜索、筛选、空库状态)
@@ -72,8 +74,10 @@ config.json              唯一需要改的配置:检索式、分类词表、专
 atlas/
   common.py              路径 / 时间 / 原子写 / 标识符归一 / 配置校验
   arxiv_source.py        arXiv Atom 客户端 + 分页守卫 + 版本巡检
+  dblp_source.py         DBLP 会议 SPARQL 客户端 + COUNT/翻页守卫
+  openalex_source.py     OpenAlex works 客户端 + 游标分页 + 摘要重建
   triage.py              题录级自动分类(词表来自 config.classify)
-  pipeline.py            合并状态机、事件、逐查询游标、整轮报告
+  pipeline.py            多来源合并状态机、事件、逐来源游标、整轮报告
   editorial.py           人工覆盖层(唯一写 editorial.json 的入口)
   pdf_text.py            PDF 下载 / 取页 / 选页
   enrich.py              编号候选句 + 机械校验的 AI 解读
@@ -90,9 +94,9 @@ dist/                    构建产物(gitignore)
 
 ## 5. 换成你自己的研究方向
 
-只改 `config.json`,代码不用动。五个块:
+只改 `config.json`,代码不用动。七个块:
 
-**① `arxiv.queries` —— 抓什么**
+**① `arxiv.queries` —— 抓哪些 arXiv 预印本**
 arXiv API 的布尔检索式,一条一个 `id`。建议写成三段:`<领域词> AND <任务词> AND <设定词>`,例如
 
 ```
@@ -101,17 +105,30 @@ arXiv API 的布尔检索式,一条一个 `id`。建议写成三段:`<领域词>
 
 改动某个 `query` 字符串会让该查询的 `query_hash` 变化 → 自动回退到 `initial_lookback_days` 重建基线。
 
-**② `classify.scope` —— 什么算「你的领域」**
+**② `dblp.venues` —— 抓哪些会议**
+每项需要 `id`、展示名 `name` 与 DBLP stream(如 `conf/cvpr`、`conf/nips`、`conf/3dim`)。
+`lookback_years` 控制首次回看几年;往年数据默认每 30 天复查一次
+(`recheck_completed_years_days`),当年数据每轮都查。
+
+**③ `openalex.journals` —— 抓哪些期刊**
+每项需要 `id`、`name`,以及 `source_id` 或 `issn`(有 `source_id` 时优先用它)。
+`initial_lookback_days` / `max_window_days` 与 arXiv 一样按窗口推进;改动 ISSN/类型等
+过滤条件会让 `filter_hash` 变化并重建基线。
+
+DBLP / OpenAlex 都支持 `scope_prefilter`:新记录先过 `classify.scope`,明显不在领域内的
+直接跳过;但已存在 DOI/arXiv 编号的记录永远不会被预筛掉,用来补全摘要、 venue 与 OA PDF。
+
+**④ `classify.scope` —— 什么算「你的领域」**
 一个必中的词表;命中即为范围内,否则 `bucket=excluded`,不会出现在站点上。
 
-**③ `classify.task` / `classify.tracks` / `classify.methods` —— 怎么分类**
+**⑤ `classify.task` / `classify.tracks` / `classify.methods` —— 怎么分类**
 `task.primary` 决定「核心方向」的门槛(`scope ∩ primary ∩ tracks`),`tracks` 是研究方向多标签。
 
-**④ `topics` —— 首页的专题卡片**
+**⑥ `topics` —— 首页的专题卡片**
 `match` 只能引用 `classify.tracks` / `classify.methods` 里真实存在的 id(配置校验会拦住写错的),
 外加 `keywords`(标题/摘要/期刊/方法名的子串)、`venue_named`、`abstract_only` 三种软匹配。
 
-**⑤ 文案** —— `name` / `name_zh` / `site_url` / `display_timezone` / `review.repo`。
+**⑦ 文案** —— `name` / `name_zh` / `site_url` / `display_timezone` / `review.repo`。
 
 > 上游原项目在这里有个坑:它的专题词表用了分类器从不产出的方法名,导致 3 个专题永远是空的。
 > 本项目把词表统一到 `classify`,并在 `load_config()` 里直接报错,写错就启动失败。
@@ -124,13 +141,23 @@ arXiv API 的布尔检索式,一条一个 `id`。建议写成三段:`<领域词>
 {
   "site":   { "name", "name_zh", "url", "timezone", "repo", "preview" },
   "classify": { "tracks": [{ "id", "name" }], "tasks": { "semantic": "语义分割" } },
-  "status": { "status": "ok|partial|failed|not-run", "at", "counts", "sources": [], "note" },
+  "status": {
+    "status": "ok|partial|failed|not-run", "at", "counts", "note",
+    "sources": [{
+      "source": "arxiv:query-id | dblp:cvpr | openalex:tpami | known-revisions",
+      "status": "ok|failed|skipped",
+      "matched", "stored", "skipped", "year", "journal", "backlog_days", "error", "reason"
+    }]
+  },
   "last_full_success": "…Z",
   "index_count": 2,
   "topics": [{ "group", "desc", "items": [{ "id", "name", "desc", "match" }] }],
   "papers": [{
     "id": "arxiv:2610.00855",
-    "title", "authors", "published", "updated", "version", "venue",
+    "title", "authors", "published", "published_precision", "updated", "version", "venue",
+    "origin": "arxiv|dblp|openalex|curated-seed",
+    "sources": ["arxiv", "dblp"],
+    "categories": ["cs.CV", "Inproceedings"],
     "identifiers": { "arxiv": [], "doi": [] },
     "first_seen", "review_status", "imported",
     "classification": { "bucket": "core|related|excluded", "tracks", "task", "methods", "note", "basis", "certainty" },
@@ -151,6 +178,11 @@ arXiv API 的布尔检索式,一条一个 `id`。建议写成三段:`<领域词>
   "events": [{ "kind": "discovered|revised|metadata-updated", "paper_id", "title", "at" }]
 }
 ```
+
+`origin` 是记录最早的来源,`sources` 是所有命中过的来源;同一篇论文的 arXiv / DBLP /
+OpenAlex 记录按强标识合并成一条,较薄的来源不会覆盖已有摘要或版本号。
+来源状态里 `matched` 是上游返回条数,`stored` 是实际写入/合并条数,`skipped` 是被
+`scope_prefilter` 挡掉的条数(这三者不相等是正常的,不代表失败)。
 
 出站走白名单(`site.PUBLIC_FIELDS`),`warnings` / `versions` / `last_seen` 等内部字段永远不会出现在网页上。
 `data.js` 会把 `<` 与 U+2028/2029 转义,防止题名里的脚本注入。
@@ -176,6 +208,8 @@ python scripts/review.py 'arxiv:2610.00855' --bucket core --tracks DA OV --note 
 1. 建仓库并推上代码(把 `config.json` 里的 `site_url`、`review.repo` 改成你的)。
 2. Settings → Pages → Source 选 **GitHub Actions**(不要选 branch)。
 3. (可选)Settings → Secrets 加 `LLM_API_KEY`;Variables 加 `LLM_BASE_URL`、`LLM_MODEL`。
+   OpenAlex 也支持免费 API key:Secrets 加 `OPENALEX_API_KEY`,Variables 加联系邮箱 `OPENALEX_MAILTO`
+   (不配也能抓,只是礼貌池限流更严)。DBLP 不需要密钥。
 4. Actions 里手动跑一次 `daily`,勾上 `refresh=true`。
 
 之后每天 UTC 00:35 自动跑;`partial`(部分来源失败)不阻断发布,只有整轮 `failed` 才会标红。
@@ -199,7 +233,16 @@ python scripts/review.py 'arxiv:2610.00855' --bucket core --tracks DA OV --note 
 
 ## 10. 已知边界
 
-- **只管 arXiv**。期刊/会议正式版需要额外接 OpenAlex/Crossref(上游有,这里留作扩展点)。
+- **DBLP 只有题录,没有摘要**。要等同一篇论文被 OpenAlex 命中(或已有 arXiv 记录)后才有摘要;
+  会议论文的 `published` 默认只精确到年。
+- **OpenAlex 摘要来自倒排索引**,个别作品可能缺失或词序不完美;以原文为准。
+- **DBLP 走 SPARQL 而不是搜索 API**。dblp.org 的搜索接口目前有 Anubis JS 挑战,标准库客户端无法通过;
+  SPARQL 端点不受影响。每个会议年份先用 `COUNT(DISTINCT ...)` 取总数,再逐页校验。
+- **预筛可能漏掉标题不含领域词的会议/期刊论文**。DBLP 没有摘要,`scope_prefilter` 只能看标题
+  (OpenAlex 还能看摘要)。更看重召回时把它设为 `false`。
+- **DBLP 会议记录通常不指向 arXiv**。它只带出版社 DOI(如 IEEE),因此同一篇论文可能以
+  arXiv 预印本和会议版两条记录并列出现;只有 DOI 或 arXiv 编号相同时才会自动合并。
+  题名相同但身份未证实时按设计只记内部 `warnings`,不自动合并 —— 这是刻意的保守策略。
 - **没有 PDF 就无法生成 AI 解读**,该条只显示摘要,并明确标注「仅摘要」。
 - **自动分类是关键词布尔判断**,不理解语义。命中背景描述很正常,页面上一律带免责声明。
 - **不做指标排名**。不同数据集与监督条件下的 mIoU 不能直接比较,这是刻意不做的功能。
