@@ -72,12 +72,12 @@ jobs:
 
       - name: Discover new papers
         id: update
-        if: ${{ github.event_name != 'pull_request' }}
+        if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.refresh) }}
         continue-on-error: true
         run: |
           ARGS=""
           if [ -n "${{ inputs.days }}" ]; then ARGS="--days ${{ inputs.days }}"; fi
-          python scripts/update.py --days 30
+          python scripts/update.py $ARGS
 
       - name: Generate AI reading notes
         id: llm
