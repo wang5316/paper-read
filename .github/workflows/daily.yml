@@ -1,0 +1,162 @@
+name: daily
+
+# 每天抓一次 arXiv、跑一轮 AI 解读、重建站点并部署到 Pages。
+# 关键设计:抓取步骤 continue-on-error —— 某个来源挂了不应该让站点停止更新;
+# 但整轮失败会由 report-failure 标红,状态同时写进站点状态栏。
+
+on:
+  schedule:
+    - cron: "35 0 * * *"        # UTC 00:35 = 北京时间 08:35
+  workflow_dispatch:
+    inputs:
+      refresh:
+        description: "是否真的联网抓取(关闭则只重建站点)"
+        type: boolean
+        default: true
+      days:
+        description: "一次性回补最近 N 天(留空=按游标增量)"
+        type: string
+        default: ""
+      enrich_limit:
+        description: "本轮最多生成几篇 AI 解读(留空=按 config 上限)"
+        type: string
+        default: ""
+  push:
+    branches: [main]
+    paths:
+      - "atlas/**"
+      - "scripts/**"
+      - "web/**"
+      - "data/**"
+      - "config.json"
+      - ".github/workflows/daily.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: observatory-state-and-pages
+  cancel-in-progress: false      # 排队而不是取消,避免两个运行同时写 store.json
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: write            # 提交 data/ 状态
+      pages: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests (offline)
+        run: python -m unittest discover -s tests -v
+
+      - name: Cache PDFs
+        uses: actions/cache@v4
+        with:
+          path: .cache/pdfs
+          key: pdfs-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            pdfs-${{ runner.os }}-
+
+      - name: Discover new papers
+        id: update
+        if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.refresh) }}
+        continue-on-error: true
+        run: |
+          ARGS=""
+          if [ -n "${{ inputs.days }}" ]; then ARGS="--days ${{ inputs.days }}"; fi
+          python scripts/update.py $ARGS
+
+      - name: Generate AI reading notes
+        id: llm
+        if: ${{ steps.update.outcome == 'success' }}
+        continue-on-error: true
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
+        run: |
+          ARGS=""
+          if [ -n "${{ inputs.enrich_limit }}" ]; then ARGS="--limit ${{ inputs.enrich_limit }}"; fi
+          python scripts/enrich.py $ARGS
+
+      - name: Configure Pages
+        id: configure
+        continue-on-error: true
+        uses: actions/configure-pages@v5
+
+      - name: Build site
+        id: build_site
+        env:
+          ATLAS_SITE_URL: ${{ steps.configure.outputs.base_url }}
+        run: |
+          if [ -n "$ATLAS_SITE_URL" ]; then
+            python scripts/build.py --site-url "$ATLAS_SITE_URL"
+          else
+            python scripts/build.py
+          fi
+
+      - name: Commit state
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/seed.json data/store.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update observatory discovery state"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          else
+            echo "no state change"
+          fi
+
+      - name: Summary
+        if: always()
+        run: python scripts/status.py >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload artifact
+        if: steps.build_site.outcome == 'success' && steps.configure.outcome == 'success'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+    outputs:
+      update_outcome: ${{ steps.update.outcome }}
+      llm_outcome: ${{ steps.llm.outcome }}
+      pages_ready: ${{ steps.configure.outcome == 'success' && steps.build_site.outcome == 'success' }}
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.pages_ready == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
+
+  report-failure:
+    needs: build
+    if: always() && (needs.build.outputs.update_outcome == 'failure' || needs.build.outputs.llm_outcome == 'failure')
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: Fail the run
+        run: |
+          echo "抓取或 AI 解读整轮失败;站点已用旧库构建。请看 Step Summary 里的来源状态。"
+          exit 1

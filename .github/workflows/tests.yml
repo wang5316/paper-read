@@ -1,0 +1,48 @@
+name: tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths:
+      - "atlas/**"
+      - "scripts/**"
+      - "tests/**"
+      - "web/**"
+      - "config.json"
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Unit tests (no network)
+        run: python -m unittest discover -s tests -v
+
+      - name: Demo build (no network, no keys)
+        run: python scripts/demo.py --out "$RUNNER_TEMP/dist"
+
+      - name: Frontend check on demo data
+        run: node tests/frontend_check.js "$RUNNER_TEMP/dist"
+
+      - name: Empty library build
+        run: |
+          python scripts/build.py --out "$RUNNER_TEMP/dist-empty"
+          node tests/frontend_check.js "$RUNNER_TEMP/dist-empty"

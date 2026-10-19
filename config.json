@@ -1,0 +1,196 @@
+{
+  "name": "3D Segmentation Observatory",
+  "name_zh": "三维分割 · 每日文献观察站",
+  "site_url": "https://wang5316.github.io/paper-read",
+  "display_timezone": "Asia/Shanghai",
+  "user_agent": "observatory/1.0 (+https://github.com/wang5316/paper-read)",
+
+  "publication": {
+    "publish_imported_references": true,
+    "publish_auto_candidates": true,
+    "publish_abstracts": true,
+    "publish_ai_drafts": true,
+    "include_related": true
+  },
+
+  "arxiv": {
+    "initial_lookback_days": 30,
+    "overlap_days": 7,
+    "max_window_days": 30,
+    "page_size": 50,
+    "max_pages_per_query": 12,
+    "request_interval_seconds": 5.0,
+    "timeout_seconds": 60,
+    "attempts": 5,
+    "revision_batch_size": 40,
+    "queries": [
+      {
+        "id": "domain-adaptation",
+        "query": "(all:\"3D\" OR all:\"point cloud\" OR all:LiDAR OR all:\"three dimensional\" OR all:\"RGB-D\") AND (all:segmentation OR all:\"scene understanding\") AND (all:\"domain adaptation\" OR all:\"domain adaptive\" OR all:\"domain shift\" OR all:\"cross domain\")",
+        "enabled": true
+      },
+      {
+        "id": "domain-generalization",
+        "query": "(all:\"3D\" OR all:\"point cloud\" OR all:LiDAR OR all:\"three dimensional\" OR all:\"RGB-D\") AND (all:segmentation OR all:\"scene understanding\") AND (all:\"domain generalization\" OR all:\"domain generalisation\" OR all:\"unseen domains\" OR all:\"out of distribution\")",
+        "enabled": true
+      },
+      {
+        "id": "open-vocabulary",
+        "query": "(all:\"3D\" OR all:\"point cloud\" OR all:LiDAR OR all:\"three dimensional\" OR all:\"RGB-D\") AND (all:segmentation OR all:\"scene understanding\") AND (all:\"open vocabulary\" OR all:\"open-vocabulary\" OR all:\"open world\" OR all:\"open set\" OR all:\"language driven\")",
+        "enabled": true
+      },
+      {
+        "id": "test-time-adaptation",
+        "query": "(all:\"3D\" OR all:\"point cloud\" OR all:LiDAR OR all:\"three dimensional\" OR all:\"RGB-D\") AND (all:segmentation OR all:\"scene understanding\") AND (all:\"test time adaptation\" OR all:\"test-time adaptation\" OR all:\"continual test time\")",
+        "enabled": true
+      }
+    ]
+  },
+
+  "classify": {
+    "scope": {
+      "id": "3d",
+      "name": "3D",
+      "patterns": [
+        "\\b3[ -]?d\\b",
+        "three[ -]dimensional",
+        "point[ -]cloud",
+        "\\blidar\\b",
+        "\\blaser scan",
+        "\\brgb[ -]?d\\b",
+        "voxel",
+        "gaussian splatting",
+        "\\bnerf\\b"
+      ]
+    },
+    "task": {
+      "primary": {
+        "id": "semantic",
+        "name": "语义分割",
+        "patterns": ["semantic[ -]?segmentation", "semantic[ -]?label", "per[ -]?point classification"]
+      },
+      "adjacent": {
+        "id": "adjacent",
+        "name": "邻近任务",
+        "patterns": [
+          "instance[ -]?segmentation",
+          "panoptic",
+          "part[ -]?segmentation",
+          "occupancy",
+          "scene graph",
+          "object detection"
+        ]
+      },
+      "any": {
+        "id": "segmentation",
+        "name": "分割(未细分)",
+        "patterns": ["segment"]
+      }
+    },
+    "tracks": [
+      {
+        "id": "DA",
+        "name": "域适应",
+        "patterns": ["domain[ -]adaptation", "domain[ -]adaptive", "cross[ -]domain adaptation"]
+      },
+      {
+        "id": "DG",
+        "name": "域泛化",
+        "patterns": [
+          "domain[ -]generalization",
+          "domain[ -]generalisation",
+          "cross[ -]domain generalization",
+          "unseen domains?"
+        ]
+      },
+      {
+        "id": "OV",
+        "name": "开放词汇",
+        "patterns": ["open[ -]vocabulary", "open[ -]vocab", "open[ -]world", "open[ -]set", "zero[ -]shot"],
+        "requires": "open[ -]vocab"
+      },
+      {
+        "id": "TTA",
+        "name": "测试时自适应",
+        "patterns": ["test[ -]time adapt", "continual test[ -]time", "online adapt"]
+      }
+    ],
+    "methods": [
+      { "id": "self-training", "patterns": ["self[ -]train", "pseudo[ -]?label", "teacher[ -]student"] },
+      { "id": "class-balance", "patterns": ["class[ -]?balanc", "long[ -]tail", "imbalance"] },
+      { "id": "contrastive", "patterns": ["contrastive"] },
+      { "id": "clustering", "patterns": ["cluster"] },
+      { "id": "prototype", "patterns": ["prototyp"] },
+      { "id": "alignment", "patterns": ["align", "adversarial"] },
+      { "id": "cross-modal", "patterns": ["cross[ -]modal", "multi[ -]?modal"] },
+      { "id": "vision-language", "patterns": ["vision[ -]language", "\\bCLIP\\b", "language[ -]guid"] },
+      { "id": "distillation", "patterns": ["distill"] },
+      { "id": "augmentation", "patterns": ["augment", "domain randomiz", "domain randomis"] },
+      { "id": "diffusion", "patterns": ["diffusion", "generative prior"] },
+      { "id": "nerf", "patterns": ["\\bnerf\\b", "neural radiance", "gaussian splatting"] },
+      { "id": "foundation-model", "patterns": ["foundation model", "\\bSAM\\b", "DINOv", "segment anything"] },
+      { "id": "prompt-adapter", "patterns": ["\\bprompt", "adapter", "\\bLoRA\\b"] },
+      { "id": "uncertainty", "patterns": ["uncertain"] },
+      { "id": "active-learning", "patterns": ["active learning", "annotation[ -]free", "label[ -]free"] },
+      { "id": "geometry", "patterns": ["geometr", "projective", "surface normal", "depth completion"] }
+    ]
+  },
+
+  "llm": {
+    "enabled": true,
+    "base_url": "https://api.openai.com/v1",
+    "model": "gpt-4o-mini",
+    "max_per_run": 8,
+    "max_per_utc_day": 24,
+    "max_pdf_pages": 40,
+    "max_input_chars": 48000,
+    "max_output_tokens": 3000,
+    "request_interval_seconds": 3.0,
+    "timeout_seconds": 150,
+    "token_parameter": "max_completion_tokens",
+    "max_consecutive_errors": 5,
+    "include_imported": true,
+    "regenerate_legacy_drafts": false
+  },
+
+  "topics": [
+    {
+      "group": "研究设定",
+      "desc": "按域偏移的研究设定划分;同一篇论文可以同时属于多个专题。",
+      "items": [
+        { "id": "da", "name": "域适应 (DA)", "desc": "源域有标签、目标域无标签或弱标签的跨域适配", "match": { "tracks": ["DA"] } },
+        { "id": "dg", "name": "域泛化 (DG)", "desc": "训练阶段看不到目标域,追求未见域的鲁棒性", "match": { "tracks": ["DG"] } },
+        { "id": "tta", "name": "测试时自适应 (TTA)", "desc": "推理阶段在线更新,通常不需要源域数据", "match": { "tracks": ["TTA"] } },
+        { "id": "ov", "name": "开放词汇 / 零样本", "desc": "语言驱动、类无关或开放类别集合的分割与理解", "match": { "tracks": ["OV"] } }
+      ]
+    },
+    {
+      "group": "方法路线",
+      "desc": "按技术路线聚合;标签来自题录级自动初筛,需结合原文核对。",
+      "items": [
+        { "id": "selftrain", "name": "自训练与伪标签", "desc": "教师-学生、伪标签、类别不平衡校正", "match": { "methods": ["self-training", "class-balance"] } },
+        { "id": "prototype", "name": "原型与对比学习", "desc": "原型聚类、对比/度量学习、特征对齐", "match": { "methods": ["prototype", "contrastive", "clustering", "alignment"] } },
+        { "id": "crossmodal", "name": "跨模态与视觉语言", "desc": "图像-点云-文本对齐、基础模型与提示适配", "match": { "methods": ["cross-modal", "vision-language", "prompt-adapter", "foundation-model"] } },
+        { "id": "generative", "name": "生成式与数据增广", "desc": "扩散、NeRF/高斯、风格迁移与增广策略", "match": { "methods": ["diffusion", "nerf", "augmentation"] } },
+        { "id": "efficient", "name": "数据高效与不确定性", "desc": "主动学习、不确定性建模与知识蒸馏", "match": { "methods": ["active-learning", "uncertainty", "distillation"] } },
+        { "id": "geometry", "name": "几何与投影", "desc": "几何一致性、投影约束、深度与法向", "match": { "methods": ["geometry"] } }
+      ]
+    },
+    {
+      "group": "场景与来源",
+      "desc": "按数据形态、应用领域与文献来源划分。",
+      "items": [
+        { "id": "lidar", "name": "LiDAR 与点云", "desc": "室外激光雷达、点云与距离图像", "match": { "keywords": ["lidar", "point cloud", "range image", "depth image"] } },
+        { "id": "remote", "name": "遥感与高光谱", "desc": "航空/卫星影像、高光谱与地表覆盖", "match": { "keywords": ["remote sensing", "hyperspectral", "aerial", "satellite", "land cover"] } },
+        { "id": "medical", "name": "医学与生物影像", "desc": "CT/MRI、超声、病理与器官分割", "match": { "keywords": ["medical", "clinical", "mri", "ct image", "lesion", "organ segmentation", "ultrasound", "histopath"] } },
+        { "id": "journal", "name": "期刊与会议论文", "desc": "发表在期刊或会议(含同时有预印本的版本)", "match": { "venue_named": true } },
+        { "id": "abstractonly", "name": "仅摘要记录", "desc": "暂未获取全文,先提供摘要与出处", "match": { "abstract_only": true } }
+      ]
+    }
+  ],
+
+  "review": {
+    "repo": "wang5316/paper-read",
+    "label": "review"
+  }
+}

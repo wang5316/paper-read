@@ -1,0 +1,112 @@
+name: review
+
+# Issue 即人工审核入口:网页上的按钮会预填一条 Issue,这里把它写回 data/editorial.json。
+# 只有仓库所有者开的 Issue 会被处理(否则任何访客都能改你的标签)。
+
+on:
+  issues:
+    types: [opened]
+
+permissions: {}
+
+concurrency:
+  group: observatory-review
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    if: github.event.issue.user.login == github.repository_owner
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    outputs:
+      applied: ${{ steps.review.outputs.applied }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Apply review
+        id: review
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          mkdir -p .cache
+          printf '%s' "$ISSUE_BODY" > .cache/issue.md
+          if python scripts/review.py --issue-body .cache/issue.md > .cache/result.json 2> .cache/error.txt; then
+            echo "applied=true" >> "$GITHUB_OUTPUT"
+            BODY=$(python - <<'PY'
+import json, pathlib
+print("✅ 已应用审核并重新部署。\n\n```json\n" + pathlib.Path(".cache/result.json").read_text("utf-8")[:3000] + "\n```")
+PY
+)
+            gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body "$BODY"
+            gh issue close "$ISSUE_NUMBER" --repo "$REPO"
+          else
+            echo "applied=false" >> "$GITHUB_OUTPUT"
+            BODY=$(python - <<'PY'
+import json, pathlib
+raw = pathlib.Path(".cache/result.json").read_text("utf-8").strip()
+try:
+    payload = json.loads(raw)
+    message = payload.get("message") or payload.get("code") or raw
+except Exception:
+    message = raw or pathlib.Path(".cache/error.txt").read_text("utf-8")[:2000]
+print("⚠️ 审核没有生效:" + str(message) + "\n\n请修改正文后重新提交,或直接用命令行 `python scripts/review.py`。")
+PY
+)
+            gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body "$BODY"
+          fi
+
+      - name: Commit editorial state
+        if: steps.review.outputs.applied == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/editorial.json
+          if ! git diff --cached --quiet; then
+            git commit -m "review: apply issue #${{ github.event.issue.number }}"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME:-main}"
+            git push origin "HEAD:${GITHUB_REF_NAME:-main}"
+          fi
+
+      - name: Build site
+        if: steps.review.outputs.applied == 'true'
+        run: python scripts/build.py
+
+      - name: Configure Pages
+        id: configure
+        if: steps.review.outputs.applied == 'true'
+        continue-on-error: true
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        if: steps.review.outputs.applied == 'true' && steps.configure.outcome == 'success'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: apply
+    if: needs.apply.outputs.applied == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
