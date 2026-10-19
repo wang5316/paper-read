@@ -120,11 +120,12 @@ if (payload.papers.length === 0) {
 } else {
   expect("抓取状态文案", store["health-title"].textContent === "最近一轮抓取成功", store["health-title"].textContent);
   expect("库内文献数", store["library-count"].textContent === String(payload.papers.length), store["library-count"].textContent);
-  expect("核心方向计数 > 0", Number(store["core-count"].textContent) > 0, store["core-count"].textContent);
+  expect("核心方向计数是数字", /^\d+$/.test(store["core-count"].textContent), store["core-count"].textContent);
   expect("卡片渲染出题名", store["papers"].innerHTML.includes(payload.papers[0].title));
   expect("卡片渲染出研究方向标签", /chip track/.test(store["papers"].innerHTML));
   expect("结果条", /找到 \d+ 篇/.test(store["results"].textContent), store["results"].textContent);
-  expect("专题分组", store["topic-groups"].innerHTML.includes("研究设定"));
+  const firstGroup = (payload.topics[0] && payload.topics[0].group) || "";
+  expect("专题分组", Boolean(firstGroup) && store["topic-groups"].innerHTML.includes(firstGroup), firstGroup);
   expect("来源状态", store["sources"].innerHTML.includes(payload.status.sources[0].source));
   expect("事件区", /新收录/.test(store["events"].innerHTML));
   expect("方向下拉已填充", store["track"].children.length >= 4, "children=" + store["track"].children.length);

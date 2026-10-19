@@ -1,6 +1,6 @@
 {
-  "name": "3D Segmentation Observatory",
-  "name_zh": "三维分割 · 每日文献观察站",
+  "name": "3D Vision Observatory",
+  "name_zh": "三维视觉 · 每日文献观察站",
   "site_url": "https://wang5316.github.io/paper-read",
   "display_timezone": "Asia/Shanghai",
   "user_agent": "observatory/1.0 (+https://github.com/wang5316/paper-read)",
@@ -14,34 +14,34 @@
   },
 
   "arxiv": {
-    "initial_lookback_days": 30,
+    "initial_lookback_days": 7,
     "overlap_days": 7,
     "max_window_days": 30,
     "page_size": 50,
-    "max_pages_per_query": 12,
+    "max_pages_per_query": 6,
     "request_interval_seconds": 5.0,
     "timeout_seconds": 60,
     "attempts": 5,
     "revision_batch_size": 40,
     "queries": [
       {
-        "id": "domain-adaptation",
-        "query": "(all:\"3D\" OR all:\"point cloud\" OR all:LiDAR OR all:\"three dimensional\" OR all:\"RGB-D\") AND (all:segmentation OR all:\"scene understanding\") AND (all:\"domain adaptation\" OR all:\"domain adaptive\" OR all:\"domain shift\" OR all:\"cross domain\")",
+        "id": "unsupervised-pointcloud-seg",
+        "query": "(all:\"point cloud\" OR all:\"point clouds\") AND all:segmentation AND (all:unsupervised OR all:\"self-supervised\" OR all:\"label-free\" OR all:\"annotation-free\")",
         "enabled": true
       },
       {
-        "id": "domain-generalization",
-        "query": "(all:\"3D\" OR all:\"point cloud\" OR all:LiDAR OR all:\"three dimensional\" OR all:\"RGB-D\") AND (all:segmentation OR all:\"scene understanding\") AND (all:\"domain generalization\" OR all:\"domain generalisation\" OR all:\"unseen domains\" OR all:\"out of distribution\")",
+        "id": "contrastive-learning",
+        "query": "all:\"contrastive learning\" AND (all:\"point cloud\" OR all:\"Gaussian splatting\" OR all:\"3D scene\")",
         "enabled": true
       },
       {
-        "id": "open-vocabulary",
-        "query": "(all:\"3D\" OR all:\"point cloud\" OR all:LiDAR OR all:\"three dimensional\" OR all:\"RGB-D\") AND (all:segmentation OR all:\"scene understanding\") AND (all:\"open vocabulary\" OR all:\"open-vocabulary\" OR all:\"open world\" OR all:\"open set\" OR all:\"language driven\")",
+        "id": "autonomous-driving",
+        "query": "(all:\"autonomous driving\" OR all:\"self-driving\") AND (all:\"point cloud\" OR all:LiDAR OR all:occupancy) AND (all:segmentation OR all:occupancy OR all:\"object detection\")",
         "enabled": true
       },
       {
-        "id": "test-time-adaptation",
-        "query": "(all:\"3D\" OR all:\"point cloud\" OR all:LiDAR OR all:\"three dimensional\" OR all:\"RGB-D\") AND (all:segmentation OR all:\"scene understanding\") AND (all:\"test time adaptation\" OR all:\"test-time adaptation\" OR all:\"continual test time\")",
+        "id": "3d-gaussian",
+        "query": "(all:\"Gaussian splatting\" OR all:\"3D Gaussian\" OR all:3DGS) AND (all:segmentation OR all:semantic OR all:\"scene understanding\")",
         "enabled": true
       }
     ]
@@ -60,14 +60,24 @@
         "\\brgb[ -]?d\\b",
         "voxel",
         "gaussian splatting",
-        "\\bnerf\\b"
+        "\\b3dgs\\b",
+        "\\bnerf\\b",
+        "neural radiance",
+        "depth map",
+        "multi[ -]?view stereo"
       ]
     },
     "task": {
       "primary": {
         "id": "semantic",
         "name": "语义分割",
-        "patterns": ["semantic[ -]?segmentation", "semantic[ -]?label", "per[ -]?point classification"]
+        "patterns": [
+          "semantic[ -]?segmentation",
+          "semantic[ -]?label",
+          "point[ -]cloud segmentation",
+          "per[ -]point classification",
+          "scene segmentation"
+        ]
       },
       "adjacent": {
         "id": "adjacent",
@@ -77,8 +87,11 @@
           "panoptic",
           "part[ -]?segmentation",
           "occupancy",
+          "object detection",
+          "3d detection",
           "scene graph",
-          "object detection"
+          "scene completion",
+          "novel view synthesis"
         ]
       },
       "any": {
@@ -89,50 +102,69 @@
     },
     "tracks": [
       {
-        "id": "DA",
-        "name": "域适应",
-        "patterns": ["domain[ -]adaptation", "domain[ -]adaptive", "cross[ -]domain adaptation"]
+        "id": "UPC",
+        "name": "无监督点云分割",
+        "patterns": [
+          "unsupervised",
+          "self[ -]supervised",
+          "semi[ -]supervised",
+          "label[ -]free",
+          "annotation[ -]free",
+          "unlabeled",
+          "without annotation"
+        ],
+        "requires": "point[ -]cloud|\\blidar\\b|\\b3[ -]?d\\b"
       },
       {
-        "id": "DG",
-        "name": "域泛化",
+        "id": "CL",
+        "name": "对比学习",
+        "patterns": ["contrastive", "InfoNCE", "positive[ -]negative pair", "triplet loss"],
+        "requires": "point[ -]cloud|\\blidar\\b|\\b3[ -]?d\\b|gaussian|scene"
+      },
+      {
+        "id": "AD",
+        "name": "自动驾驶",
         "patterns": [
-          "domain[ -]generalization",
-          "domain[ -]generalisation",
-          "cross[ -]domain generalization",
-          "unseen domains?"
+          "autonomous driving",
+          "self[ -]driving",
+          "automated driving",
+          "ego[ -]vehicle",
+          "on[ -]road perception",
+          "driving scene"
         ]
       },
       {
-        "id": "OV",
-        "name": "开放词汇",
-        "patterns": ["open[ -]vocabulary", "open[ -]vocab", "open[ -]world", "open[ -]set", "zero[ -]shot"],
-        "requires": "open[ -]vocab"
-      },
-      {
-        "id": "TTA",
-        "name": "测试时自适应",
-        "patterns": ["test[ -]time adapt", "continual test[ -]time", "online adapt"]
+        "id": "GS",
+        "name": "3D 高斯",
+        "patterns": [
+          "gaussian splatting",
+          "3d gaussian",
+          "hybrid gaussian",
+          "gaussian primitives",
+          "gaussian field",
+          "\\b3dgs\\b"
+        ]
       }
     ],
     "methods": [
-      { "id": "self-training", "patterns": ["self[ -]train", "pseudo[ -]?label", "teacher[ -]student"] },
-      { "id": "class-balance", "patterns": ["class[ -]?balanc", "long[ -]tail", "imbalance"] },
-      { "id": "contrastive", "patterns": ["contrastive"] },
+      { "id": "self-supervised", "patterns": ["self[ -]supervised", "self[ -]train", "masked[ -]?point", "masked[ -]?autoencod", "pre[ -]?train"] },
+      { "id": "contrastive", "patterns": ["contrastive", "InfoNCE", "positive[ -]negative", "triplet"] },
       { "id": "clustering", "patterns": ["cluster"] },
       { "id": "prototype", "patterns": ["prototyp"] },
       { "id": "alignment", "patterns": ["align", "adversarial"] },
-      { "id": "cross-modal", "patterns": ["cross[ -]modal", "multi[ -]?modal"] },
-      { "id": "vision-language", "patterns": ["vision[ -]language", "\\bCLIP\\b", "language[ -]guid"] },
+      { "id": "cross-modal", "patterns": ["cross[ -]modal", "multi[ -]?modal", "multi[ -]?view"] },
+      { "id": "vision-language", "patterns": ["vision[ -]language", "\\bCLIP\\b", "language[ -]guid", "text[ -]prompt"] },
       { "id": "distillation", "patterns": ["distill"] },
-      { "id": "augmentation", "patterns": ["augment", "domain randomiz", "domain randomis"] },
       { "id": "diffusion", "patterns": ["diffusion", "generative prior"] },
-      { "id": "nerf", "patterns": ["\\bnerf\\b", "neural radiance", "gaussian splatting"] },
+      { "id": "gaussian", "patterns": ["gaussian splatting", "\\b3dgs\\b", "gaussian primitives", "gaussian"] },
+      { "id": "nerf", "patterns": ["\\bnerf\\b", "neural radiance"] },
       { "id": "foundation-model", "patterns": ["foundation model", "\\bSAM\\b", "DINOv", "segment anything"] },
       { "id": "prompt-adapter", "patterns": ["\\bprompt", "adapter", "\\bLoRA\\b"] },
       { "id": "uncertainty", "patterns": ["uncertain"] },
       { "id": "active-learning", "patterns": ["active learning", "annotation[ -]free", "label[ -]free"] },
-      { "id": "geometry", "patterns": ["geometr", "projective", "surface normal", "depth completion"] }
+      { "id": "geometry", "patterns": ["geometr", "surface normal", "projective", "depth completion"] },
+      { "id": "occupancy", "patterns": ["occupancy"] },
+      { "id": "temporal", "patterns": ["temporal", "\\b4d\\b", "sequential", "multi[ -]frame"] }
     ]
   },
 
@@ -155,34 +187,31 @@
 
   "topics": [
     {
-      "group": "研究设定",
-      "desc": "按域偏移的研究设定划分;同一篇论文可以同时属于多个专题。",
+      "group": "研究主题",
+      "desc": "你关注的四个方向;一篇论文可以同时属于多个主题。",
       "items": [
-        { "id": "da", "name": "域适应 (DA)", "desc": "源域有标签、目标域无标签或弱标签的跨域适配", "match": { "tracks": ["DA"] } },
-        { "id": "dg", "name": "域泛化 (DG)", "desc": "训练阶段看不到目标域,追求未见域的鲁棒性", "match": { "tracks": ["DG"] } },
-        { "id": "tta", "name": "测试时自适应 (TTA)", "desc": "推理阶段在线更新,通常不需要源域数据", "match": { "tracks": ["TTA"] } },
-        { "id": "ov", "name": "开放词汇 / 零样本", "desc": "语言驱动、类无关或开放类别集合的分割与理解", "match": { "tracks": ["OV"] } }
+        { "id": "upc", "name": "无监督点云分割", "desc": "无标注或少标注条件下做点云语义分割", "match": { "tracks": ["UPC"] } },
+        { "id": "contrastive", "name": "对比学习", "desc": "对比损失、正负样本构造、表征学习", "match": { "tracks": ["CL"] } },
+        { "id": "autodrive", "name": "自动驾驶", "desc": "车载感知、3D 检测、占用与可行驶区域", "match": { "tracks": ["AD"] } },
+        { "id": "gaussian3d", "name": "3D 高斯", "desc": "3D Gaussian Splatting 的表示、语义与编辑", "match": { "tracks": ["GS"] } }
       ]
     },
     {
       "group": "方法路线",
       "desc": "按技术路线聚合;标签来自题录级自动初筛,需结合原文核对。",
       "items": [
-        { "id": "selftrain", "name": "自训练与伪标签", "desc": "教师-学生、伪标签、类别不平衡校正", "match": { "methods": ["self-training", "class-balance"] } },
-        { "id": "prototype", "name": "原型与对比学习", "desc": "原型聚类、对比/度量学习、特征对齐", "match": { "methods": ["prototype", "contrastive", "clustering", "alignment"] } },
-        { "id": "crossmodal", "name": "跨模态与视觉语言", "desc": "图像-点云-文本对齐、基础模型与提示适配", "match": { "methods": ["cross-modal", "vision-language", "prompt-adapter", "foundation-model"] } },
-        { "id": "generative", "name": "生成式与数据增广", "desc": "扩散、NeRF/高斯、风格迁移与增广策略", "match": { "methods": ["diffusion", "nerf", "augmentation"] } },
-        { "id": "efficient", "name": "数据高效与不确定性", "desc": "主动学习、不确定性建模与知识蒸馏", "match": { "methods": ["active-learning", "uncertainty", "distillation"] } },
-        { "id": "geometry", "name": "几何与投影", "desc": "几何一致性、投影约束、深度与法向", "match": { "methods": ["geometry"] } }
+        { "id": "selfsup", "name": "自监督与预训练", "desc": "掩码建模、预训练目标、表征迁移", "match": { "methods": ["self-supervised"] } },
+        { "id": "multimodal", "name": "跨模态与视觉语言", "desc": "图文/点云对齐、CLIP 类模型、提示与适配器", "match": { "methods": ["cross-modal", "vision-language", "prompt-adapter", "foundation-model"] } },
+        { "id": "efficient", "name": "蒸馏与不确定性", "desc": "知识蒸馏、不确定性建模、主动学习", "match": { "methods": ["distillation", "uncertainty", "active-learning"] } },
+        { "id": "generative", "name": "生成式与神经渲染", "desc": "扩散模型、NeRF、高斯表示与数据增广", "match": { "methods": ["diffusion", "nerf", "gaussian"] } }
       ]
     },
     {
       "group": "场景与来源",
-      "desc": "按数据形态、应用领域与文献来源划分。",
+      "desc": "按数据形态、应用场景与文献来源划分。",
       "items": [
         { "id": "lidar", "name": "LiDAR 与点云", "desc": "室外激光雷达、点云与距离图像", "match": { "keywords": ["lidar", "point cloud", "range image", "depth image"] } },
-        { "id": "remote", "name": "遥感与高光谱", "desc": "航空/卫星影像、高光谱与地表覆盖", "match": { "keywords": ["remote sensing", "hyperspectral", "aerial", "satellite", "land cover"] } },
-        { "id": "medical", "name": "医学与生物影像", "desc": "CT/MRI、超声、病理与器官分割", "match": { "keywords": ["medical", "clinical", "mri", "ct image", "lesion", "organ segmentation", "ultrasound", "histopath"] } },
+        { "id": "outdoor", "name": "车载与数据集", "desc": "KITTI / nuScenes / Waymo 等驾驶场景数据", "match": { "keywords": ["kitti", "nuscenes", "waymo", "argoverse", "cityscapes", "driving"] } },
         { "id": "journal", "name": "期刊与会议论文", "desc": "发表在期刊或会议(含同时有预印本的版本)", "match": { "venue_named": true } },
         { "id": "abstractonly", "name": "仅摘要记录", "desc": "暂未获取全文,先提供摘要与出处", "match": { "abstract_only": true } }
       ]

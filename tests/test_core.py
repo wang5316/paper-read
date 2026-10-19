@@ -249,28 +249,30 @@ class MergeTests(unittest.TestCase):
 class ClassifyTests(unittest.TestCase):
     def test_core_related_excluded(self):
         core = triage.classify(
-            "Cross-Domain 3D Semantic Segmentation of Point Clouds",
-            "We propose domain adaptation with pseudo-label self-training for 3D semantic segmentation.",
+            "Unsupervised 3D Semantic Segmentation of Point Clouds",
+            "We propose a self-supervised and contrastive learning framework for point cloud "
+            "semantic segmentation without manual annotations.",
             CONFIG["classify"],
         )
         self.assertEqual(core["bucket"], "core")
         self.assertEqual(core["task"], "semantic")
-        self.assertIn("DA", core["tracks"])
+        self.assertIn("UPC", core["tracks"])
 
         excluded = triage.classify(
-            "2D Image Segmentation Adaptation",
-            "Domain adaptation for natural image semantic segmentation.",
+            "2D Image Segmentation with Contrastive Learning",
+            "Contrastive learning for natural image semantic segmentation.",
             CONFIG["classify"],
         )
         self.assertEqual(excluded["bucket"], "excluded")
 
-    def test_weak_open_set_does_not_become_open_vocabulary(self):
+    def test_track_requires_guard(self):
+        # 出现 unsupervised 但没有任何 3D / 点云线索时,UPC 不该被赋上(track.requires 生效)
         result = triage.classify(
-            "3D Semantic Segmentation for Open-Set Scenarios",
-            "We study open-set recognition for point cloud semantic segmentation.",
+            "Unsupervised Clustering for Image Segmentation",
+            "An unsupervised method for natural image segmentation.",
             CONFIG["classify"],
         )
-        self.assertNotIn("OV", result["tracks"])
+        self.assertNotIn("UPC", result["tracks"])
 
     def test_config_rejects_unknown_topic_method(self):
         broken = json.loads((ROOT / "config.json").read_text("utf-8"))
