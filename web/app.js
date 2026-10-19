@@ -117,7 +117,6 @@ function renderHeader() {
   }
   if (D.site && D.site.name_zh) {
     $("footer-name").textContent = D.site.name_zh + " · Daily discovery, deliberate reading.";
-    $("brand-en").textContent = D.site.name ? String(D.site.name).toUpperCase().slice(0, 24) : "LITERATURE";
   }
   const tracks = (D.classify && D.classify.tracks) || [];
   const select = $("track");
