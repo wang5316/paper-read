@@ -40,7 +40,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:08:31Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -116,7 +116,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:08:31Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -182,7 +182,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:08:31Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -246,7 +246,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:08:31Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -341,7 +341,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:08:31Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -398,7 +398,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:08:31Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -475,7 +475,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:08:31Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -547,7 +547,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:08:31Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -613,7 +613,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:08:31Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -709,7 +709,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:08:31Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -794,7 +794,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:08:31Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -868,7 +868,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -1006,7 +1006,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -1097,8 +1097,16 @@
       ],
       "imported": false,
       "origin": "arxiv",
+      "sources": [
+        "arxiv"
+      ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T08:23:07Z",
+      "last_seen": "2026-10-20T05:12:04Z",
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": [],
+      "abstract_source": "arxiv",
       "classification": {
         "bucket": "related",
         "tracks": [
@@ -1126,11 +1134,7 @@
             "quote": "Adversarial Robustness of Camera-Radar Sensor Fusion for Autonomous Driving Autonomous driving (AD) relies on multi-sensor perception to interpret the surrounding environment."
           }
         ]
-      },
-      "review_status": "candidate",
-      "full_text_read": false,
-      "warnings": [],
-      "versions": []
+      }
     },
     "arxiv:2610.15745": {
       "id": "arxiv:2610.15745",
@@ -1166,8 +1170,16 @@
       ],
       "imported": false,
       "origin": "arxiv",
+      "sources": [
+        "arxiv"
+      ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T08:23:07Z",
+      "last_seen": "2026-10-20T05:12:04Z",
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": [],
+      "abstract_source": "arxiv",
       "classification": {
         "bucket": "related",
         "tracks": [
@@ -1195,11 +1207,7 @@
             "quote": "piking Experts Multimodal 3D occupancy prediction underpins safe autonomous driving through comprehensive scene understanding. However, existing methods have largely pursued higher ac"
           }
         ]
-      },
-      "review_status": "candidate",
-      "full_text_read": false,
-      "warnings": [],
-      "versions": []
+      }
     },
     "arxiv:2610.15112": {
       "id": "arxiv:2610.15112",
@@ -1232,8 +1240,16 @@
       ],
       "imported": false,
       "origin": "arxiv",
+      "sources": [
+        "arxiv"
+      ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T08:23:07Z",
+      "last_seen": "2026-10-20T05:12:04Z",
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": [],
+      "abstract_source": "arxiv",
       "classification": {
         "bucket": "related",
         "tracks": [
@@ -1271,11 +1287,7 @@
             "quote": "Drive3R: Block-wise Streaming Geometric Foundation Models for Autonomous Driving High-fidelity closed-loop simulation for autonomous driving increasingly relies on dense multi-view"
           }
         ]
-      },
-      "review_status": "candidate",
-      "full_text_read": false,
-      "warnings": [],
-      "versions": []
+      }
     },
     "arxiv:2610.09444": {
       "id": "arxiv:2610.09444",
@@ -1307,8 +1319,16 @@
       ],
       "imported": false,
       "origin": "arxiv",
+      "sources": [
+        "arxiv"
+      ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T08:23:07Z",
+      "last_seen": "2026-10-20T05:12:04Z",
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": [],
+      "abstract_source": "arxiv",
       "classification": {
         "bucket": "related",
         "tracks": [
@@ -1351,11 +1371,7 @@
             "quote": "TROcc: Lightweight 4D Occupancy Forecasting via Instance-Centric 3D Gaussians Forecasting future 3D occupancy from surround-view cameras is essential for autonomous driving, ye"
           }
         ]
-      },
-      "review_status": "candidate",
-      "full_text_read": false,
-      "warnings": [],
-      "versions": []
+      }
     },
     "arxiv:2610.04356": {
       "id": "arxiv:2610.04356",
@@ -1617,7 +1633,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -1715,7 +1731,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -1782,7 +1798,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -1844,7 +1860,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -1920,7 +1936,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -1993,8 +2009,16 @@
       ],
       "imported": false,
       "origin": "arxiv",
+      "sources": [
+        "arxiv"
+      ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T08:23:07Z",
+      "last_seen": "2026-10-20T05:12:04Z",
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": [],
+      "abstract_source": "arxiv",
       "classification": {
         "bucket": "core",
         "tracks": [
@@ -2022,11 +2046,7 @@
             "quote": "3D Gaussian Splatting for Fine-grained Urban Scene Reconstruction via Semantic-guided Density Control and Loss Design 3D"
           }
         ]
-      },
-      "review_status": "candidate",
-      "full_text_read": false,
-      "warnings": [],
-      "versions": []
+      }
     },
     "arxiv:2610.16177": {
       "id": "arxiv:2610.16177",
@@ -2039,8 +2059,8 @@
       ],
       "abstract": "Open-vocabulary 3D Gaussian segmentation typically binds semantic features to the per-Gaussian state via per-scene gradient training (1-4 h) or the more recent closed-form distillation. Both commit each primitive to a single feature; therefore, boundary Gaussians spanning multiple 2D instances are forced into a hard decision that degrades retrieval accuracy and yields unstable mask boundaries at render time. We present DIGS, a training-free framework with two stages, class-agnostic mapping and multi-modal encoding, that decouples instance discovery from linguistic naming. At the Gaussian level, our distribution-informed representation maintains an explicit top-$M$ label distribution per primitive, updated by a tempered Dirichlet rule; preservation of multi-peaked label distributions at boundary primitives allows a late-argmax renderer to recover clean instance boundaries. A bidirectional state machine aggregates these distributions into a persistent class-agnostic instance ontology. The instance-level encoding stage then fuses the CLIP visual embedding of each instance's isolated 3D footprint with the CLIP-text embedding of an LLM-generated attribute description, disambiguating visually similar instances. On a single A100, DIGS completes mapping and instance encoding on LERF-OVS in 1.0-3.2 min per scene, depending on whether LLM fusion is enabled, and serves native 3D queries in 5.4 ms. It reaches 71.95% mean mIoU on LERF-OVS, outperforming both the training-free SFS and training-based LaGa baselines. DIGS also achieves the highest mean mIoU on LERF-Mask and 3D-OVS and surpasses Gaga and ObjectGS on Replica under their respective evaluation protocols. Code is available at https://github.com/ZephyrZos/DIGS.",
       "published": "2026-10-12T04:52:38Z",
-      "updated": "2026-10-12T04:52:38Z",
-      "version": 1,
+      "updated": "2026-10-17T02:40:31Z",
+      "version": 2,
       "identifiers": {
         "arxiv": [
           "2610.16177"
@@ -2050,14 +2070,29 @@
       "url": "https://arxiv.org/abs/2610.16177",
       "pdf": "https://arxiv.org/pdf/2610.16177",
       "venue": "arXiv",
-      "comment": "",
+      "comment": "Accepted at NeurIPS 2026",
       "categories": [
         "cs.CV"
       ],
       "imported": false,
       "origin": "arxiv",
+      "sources": [
+        "arxiv"
+      ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T08:23:07Z",
+      "last_seen": "2026-10-20T05:12:04Z",
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": [
+        {
+          "title": "DIGS: Distribution-Informed Gaussian Splatting for Training-Free Open-Vocabulary 3D Segmentation",
+          "version": 1,
+          "updated": "2026-10-12T04:52:38Z",
+          "published": "2026-10-12T04:52:38Z"
+        }
+      ],
+      "abstract_source": "arxiv",
       "classification": {
         "bucket": "related",
         "tracks": [
@@ -2095,11 +2130,7 @@
             "quote": "DIGS: Distribution-Informed Gaussian Splatting for Training-Free Open-Vocabulary 3D Segmentation Open-vocabulary 3D Gaussian segmentation typicall"
           }
         ]
-      },
-      "review_status": "candidate",
-      "full_text_read": false,
-      "warnings": [],
-      "versions": []
+      }
     },
     "arxiv:2610.14963": {
       "id": "arxiv:2610.14963",
@@ -2133,8 +2164,16 @@
       ],
       "imported": false,
       "origin": "arxiv",
+      "sources": [
+        "arxiv"
+      ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T08:23:07Z",
+      "last_seen": "2026-10-20T05:12:04Z",
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": [],
+      "abstract_source": "arxiv",
       "classification": {
         "bucket": "related",
         "tracks": [
@@ -2167,11 +2206,7 @@
             "quote": "AD-GS: Anatomical Density-guided 3D Gaussian Splatting for Sparse-View Dental CBCT Reconstruction Sparse-view Cone-Beam Computed Tomography (CBCT) reconst"
           }
         ]
-      },
-      "review_status": "candidate",
-      "full_text_read": false,
-      "warnings": [],
-      "versions": []
+      }
     },
     "arxiv:2610.13143": {
       "id": "arxiv:2610.13143",
@@ -2200,8 +2235,16 @@
       ],
       "imported": false,
       "origin": "arxiv",
+      "sources": [
+        "arxiv"
+      ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T08:23:07Z",
+      "last_seen": "2026-10-20T05:12:04Z",
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": [],
+      "abstract_source": "arxiv",
       "classification": {
         "bucket": "related",
         "tracks": [
@@ -2234,11 +2277,7 @@
             "quote": "Measurable Semantic 3D Gaussian Splatting with Joint Region and Depth Supervision for Interactive Building Inspection Image-based 3D reconstr"
           }
         ]
-      },
-      "review_status": "candidate",
-      "full_text_read": false,
-      "warnings": [],
-      "versions": []
+      }
     },
     "arxiv:2610.11011": {
       "id": "arxiv:2610.11011",
@@ -2274,8 +2313,16 @@
       ],
       "imported": false,
       "origin": "arxiv",
+      "sources": [
+        "arxiv"
+      ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T08:23:07Z",
+      "last_seen": "2026-10-20T05:12:04Z",
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": [],
+      "abstract_source": "arxiv",
       "classification": {
         "bucket": "core",
         "tracks": [
@@ -2313,11 +2360,7 @@
             "quote": "PCAsplat: Gaussian Splatting with Local PCA Regularization Gaussian splatting has emerged as a flexible representation for 3D re"
           }
         ]
-      },
-      "review_status": "candidate",
-      "full_text_read": false,
-      "warnings": [],
-      "versions": []
+      }
     },
     "arxiv:2610.08756": {
       "id": "arxiv:2610.08756",
@@ -2346,8 +2389,16 @@
       ],
       "imported": false,
       "origin": "arxiv",
+      "sources": [
+        "arxiv"
+      ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T08:23:07Z",
+      "last_seen": "2026-10-20T05:12:04Z",
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": [],
+      "abstract_source": "arxiv",
       "classification": {
         "bucket": "related",
         "tracks": [
@@ -2370,11 +2421,7 @@
             "quote": "Post-Training Semantic Lifting for 3D Gaussian Splatting: Separating Detector, Lifting and Representation Error The same Gaussian of a 3D Gaussian Splatting"
           }
         ]
-      },
-      "review_status": "candidate",
-      "full_text_read": false,
-      "warnings": [],
-      "versions": []
+      }
     },
     "arxiv:2610.08179": {
       "id": "arxiv:2610.08179",
@@ -2407,8 +2454,16 @@
       ],
       "imported": false,
       "origin": "arxiv",
+      "sources": [
+        "arxiv"
+      ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T08:23:07Z",
+      "last_seen": "2026-10-20T05:12:04Z",
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": [],
+      "abstract_source": "arxiv",
       "classification": {
         "bucket": "related",
         "tracks": [
@@ -2446,11 +2501,7 @@
             "quote": "View Matters: Keyframe-Guided Text-Driven 3D Gaussian Editing Text-driven 3D Gaussian editing commonly does not distinguish the editing reliability of re"
           }
         ]
-      },
-      "review_status": "candidate",
-      "full_text_read": false,
-      "warnings": [],
-      "versions": []
+      }
     },
     "arxiv:2610.07569": {
       "id": "arxiv:2610.07569",
@@ -3237,7 +3288,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -3311,7 +3362,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -3387,7 +3438,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -3480,7 +3531,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -3548,7 +3599,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -3617,7 +3668,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -3691,7 +3742,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T08:23:07Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -6944,7 +6995,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -7020,7 +7071,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -7085,7 +7136,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -7155,7 +7206,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -7218,7 +7269,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -7280,7 +7331,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -7347,7 +7398,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -7412,7 +7463,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -7486,7 +7537,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -7561,7 +7612,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -7634,7 +7685,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -7691,7 +7742,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -7758,7 +7809,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -7819,7 +7870,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -7881,7 +7932,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -7945,7 +7996,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -8009,7 +8060,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -8069,7 +8120,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -8130,7 +8181,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -8191,7 +8242,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -8255,7 +8306,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -8320,7 +8371,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -8387,7 +8438,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -8451,7 +8502,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -8515,7 +8566,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -8575,7 +8626,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -8645,7 +8696,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -8707,7 +8758,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -8767,7 +8818,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -8828,7 +8879,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -8900,7 +8951,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -8967,7 +9018,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -9025,7 +9076,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -9094,7 +9145,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -9154,7 +9205,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -9217,7 +9268,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -9285,7 +9336,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -9341,7 +9392,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -9402,7 +9453,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -9475,7 +9526,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -9545,7 +9596,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -9616,7 +9667,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -9693,7 +9744,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -9765,7 +9816,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -9827,7 +9878,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -9892,7 +9943,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -9956,7 +10007,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -10022,7 +10073,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -10082,7 +10133,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -10143,7 +10194,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -10208,7 +10259,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -10278,7 +10329,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -10341,7 +10392,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -10406,7 +10457,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -10465,7 +10516,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -10527,7 +10578,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -10592,7 +10643,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -10656,7 +10707,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -14011,7 +14062,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -14075,7 +14126,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -14130,7 +14181,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -14188,7 +14239,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -14260,7 +14311,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -14319,7 +14370,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -14392,7 +14443,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -14459,7 +14510,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -14522,7 +14573,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -14584,7 +14635,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -14642,7 +14693,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -14705,7 +14756,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -14774,7 +14825,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -14853,7 +14904,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -14919,7 +14970,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -14976,7 +15027,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -15044,7 +15095,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -15119,7 +15170,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -15181,7 +15232,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -15240,7 +15291,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -15304,7 +15355,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -15373,7 +15424,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -15433,7 +15484,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -15508,7 +15559,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -15564,7 +15615,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -15633,7 +15684,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -15701,7 +15752,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -15765,7 +15816,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -15831,7 +15882,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -15898,7 +15949,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -16088,7 +16139,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -16157,7 +16208,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -16220,7 +16271,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -16282,7 +16333,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -16345,7 +16396,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -16405,7 +16456,7 @@
         "dblp"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -17633,7 +17684,7 @@
         "arxiv"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -17730,7 +17781,7 @@
         "openalex"
       ],
       "first_seen": "2026-10-19T13:19:54Z",
-      "last_seen": "2026-10-19T13:19:54Z",
+      "last_seen": "2026-10-20T05:12:04Z",
       "review_status": "candidate",
       "full_text_read": false,
       "warnings": [],
@@ -17854,28 +17905,250 @@
           }
         ]
       }
+    },
+    "arxiv:2610.26816": {
+      "id": "arxiv:2610.26816",
+      "title": "Real-Time Radar Semantic and Panoptic Scene Understanding",
+      "authors": [
+        "Santosh Parit",
+        "Julia Hindel",
+        "Rohit Mohan",
+        "Georgi Pramatarov",
+        "Paul Newman",
+        "Daniele De Martini",
+        "Abhinav Valada"
+      ],
+      "abstract": "Robust scene understanding under varying environmental conditions is essential for safe autonomous driving. While cameras and LiDAR degrade in adverse weather and poor lighting, Frequency-Modulated Continuous-Wave (FMCW) spinning radar provides dependable 360° perception at extended ranges with minimal compute cost. However, real-time FMCW radar scene understanding is challenging due to complex signal returns, limited temporal resolution, and scarce annotated datasets. We introduce StreamRPS, a novel framework for streaming FMCW radar panoptic segmentation, comprising an automated label-generation pipeline via LiDAR scene completion and a real-time streaming network for semantic and panoptic segmentation. Our encoder-decoder streaming architecture comprises a radar-specific hierarchical Transformer encoder and task-specific decoders for semantic or panoptic prediction. Our encoder introduces a stem to capture range-dependent signatures, anisotropic patch embeddings to preserve angular resolution, and axial polar attention to separately model the periodic azimuth and bounded range axes. We further introduce azimuth roll rotation augmentation to simulate ego-vehicle rotation during training. Comprehensive experiments on the SAX and BOREAS datasets validate both our auto-labeling methodology and streaming segmentation network against established baselines. We outperform the strongest baseline by at least 1.4pp while processing sectors at over 400 FPS in a 4-sector streaming setting. We additionally provide manual annotations for 100 SAX radar scans, enabling independent evaluation of the entire framework.",
+      "published": "2026-10-19T17:51:49Z",
+      "updated": "2026-10-19T17:51:49Z",
+      "version": 1,
+      "identifiers": {
+        "arxiv": [
+          "2610.26816"
+        ],
+        "doi": []
+      },
+      "url": "https://arxiv.org/abs/2610.26816",
+      "pdf": "https://arxiv.org/pdf/2610.26816",
+      "venue": "arXiv",
+      "comment": "",
+      "categories": [
+        "cs.CV"
+      ],
+      "imported": false,
+      "origin": "arxiv",
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen": "2026-10-20T05:12:04Z",
+      "last_seen": "2026-10-20T05:12:04Z",
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": [],
+      "abstract_source": "arxiv",
+      "classification": {
+        "bucket": "related",
+        "tracks": [
+          "AD"
+        ],
+        "task": "adjacent",
+        "methods": [
+          "temporal"
+        ],
+        "basis": "title+abstract",
+        "certainty": "needs-review",
+        "note": "自动关键词初筛;标签可能来自背景或对比描述,不代表已核实任务设置、实验条件或论文贡献。",
+        "evidence": [
+          {
+            "label": "temporal",
+            "quote": "erstanding is challenging due to complex signal returns, limited temporal resolution, and scarce annotated datasets. We introduce StreamRPS, a novel framework for streaming"
+          },
+          {
+            "label": "AD",
+            "quote": "ing under varying environmental conditions is essential for safe autonomous driving. While cameras and LiDAR degrade in adverse weather and poor lighting, Frequency-Modulated Continuo"
+          }
+        ]
+      }
+    },
+    "arxiv:2610.24858": {
+      "id": "arxiv:2610.24858",
+      "title": "Arbitrary-Scale Anisotropic 3D MRI Super-Resolution with Gaussian Prototypes",
+      "authors": [
+        "Aditya Rastogi",
+        "Ramon Leiser",
+        "Prateek Singh",
+        "Martha Foltyn-Dumitru",
+        "Martin Bendszus",
+        "Fabian Bamberg",
+        "Klaus Maier-Hein",
+        "Kai Schlamp",
+        "Alexander Radbruch",
+        "Gianluca Brugnara",
+        "Philipp Vollmuth"
+      ],
+      "abstract": "Reducing MRI acquisition time improves patient comfort, reduces motion artefacts, and increases scanner throughput. Clinical protocols often shorten acquisitions by sacrificing spatial resolution, particularly along the slice axis. Super-resolution can recover higher-resolution images, but existing methods are typically specialised to one scale or acquisition geometry, limiting their use across heterogeneous clinical protocols. We present GSMR3D, a continuous volumetric model that reconstructs arbitrary isotropic and anisotropic resolutions with a single checkpoint per MRI contrast. It combines a learned dictionary of anisotropic 3D Gaussian prototypes with scale-conditioned frequency encoding and an exact measurement-consistency projection, keeping reconstructions consistent with the acquired low-resolution data. We train separate models on 3,731 contrast-enhanced T1-weighted and 30,254 T1-weighted brain MRI volumes from clinical and population-based cohorts. We evaluate GSMR3D against geometry-specific specialists for isotropic, in-plane, and through-plane super-resolution using reconstruction quality and downstream tasks: brain tumour segmentation, brain-metastasis detection, and brain parcellation. GSMR3D outperforms specialists at isotropic $2\\times$ and achieves better LPIPS, DISTS, and FID across all geometries, although specialists retain higher PSNR in anisotropic settings. It more faithfully preserves glioma segmentations across all geometries, achieves the highest lesion sensitivity on an independent brain-metastasis cohort, and the highest brain-parcellation agreement for isotropic and in-plane reconstruction. Reconstruction takes about 6s per volume, adding little overhead relative to acquisition-time savings. GSMR3D offers a flexible approach to MRI scan-time reduction with one model per contrast across geometries while preserving information relevant to downstream tasks.",
+      "published": "2026-10-17T20:18:08Z",
+      "updated": "2026-10-17T20:18:08Z",
+      "version": 1,
+      "identifiers": {
+        "arxiv": [
+          "2610.24858"
+        ],
+        "doi": []
+      },
+      "url": "https://arxiv.org/abs/2610.24858",
+      "pdf": "https://arxiv.org/pdf/2610.24858",
+      "venue": "arXiv",
+      "comment": "26 pages, 6 figures, 15 tables (including appendix)",
+      "categories": [
+        "cs.CV"
+      ],
+      "imported": false,
+      "origin": "arxiv",
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen": "2026-10-20T05:12:04Z",
+      "last_seen": "2026-10-20T05:12:04Z",
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": [],
+      "abstract_source": "arxiv",
+      "classification": {
+        "bucket": "related",
+        "tracks": [
+          "GS"
+        ],
+        "task": "segmentation",
+        "methods": [
+          "prototype",
+          "gaussian",
+          "geometry"
+        ],
+        "basis": "title+abstract",
+        "certainty": "needs-review",
+        "note": "自动关键词初筛;标签可能来自背景或对比描述,不代表已核实任务设置、实验条件或论文贡献。",
+        "evidence": [
+          {
+            "label": "prototype",
+            "quote": "rbitrary-Scale Anisotropic 3D MRI Super-Resolution with Gaussian Prototypes Reducing MRI acquisition time improves patient comfort, reduces motion artefacts, and increases s"
+          },
+          {
+            "label": "gaussian",
+            "quote": "Arbitrary-Scale Anisotropic 3D MRI Super-Resolution with Gaussian Prototypes Reducing MRI acquisition time improves patient comfort, reduces motion artefacts, and in"
+          },
+          {
+            "label": "geometry",
+            "quote": "ng methods are typically specialised to one scale or acquisition geometry, limiting their use across heterogeneous clinical protocols. We present GSMR3D, a continuous volum"
+          },
+          {
+            "label": "GS",
+            "quote": "er MRI contrast. It combines a learned dictionary of anisotropic 3D Gaussian prototypes with scale-conditioned frequency encoding and an exact measurement-consistency projectio"
+          }
+        ]
+      }
+    },
+    "arxiv:2610.24452": {
+      "id": "arxiv:2610.24452",
+      "title": "HumanSkill-4D: Training-Free Language Querying of Animatable Gaussian Avatars in Space and Time",
+      "authors": [
+        "unsu Kim",
+        "Naeun Kim",
+        "Dongyoon Han",
+        "Seungryul Baek"
+      ],
+      "abstract": "We introduce avatar referring segmentation, which selects regions of animatable Gaussian avatars from language queries. A query can also specify a pose or motion to select matching intervals. This lets users interact with avatars for local editing and motion inspection. However, making these selections with existing language Gaussian splatting methods poses two challenges: adjacent parts and garments are hard to separate and may be referred to indirectly (region ambiguity), while fine-grained motions can look alike in RGB (motion ambiguity). We address these challenges with HumanSkill-4D, a training-free framework that shares a multimodal large language model (MLLM) and geometric operators across avatars. For each avatar, a semantic memory links body-part and garment categories to persistent Gaussian regions and appearance descriptions. The MLLM uses category names and descriptions to select categories by appearance, relation, or function. To find matching intervals, it composes operators into programs that check query conditions on driving joint trajectories stored in a motion memory. These category choices and operator outputs make selections traceable, while composing or adding operators supports new motion conditions. To evaluate this task, we introduce three human-annotated benchmarks and show that HumanSkill-4D outperforms the baselines in part segmentation and 3D and 4D referring segmentation, with compact memories and only minutes of setup per avatar.",
+      "published": "2026-10-17T04:43:01Z",
+      "updated": "2026-10-17T04:43:01Z",
+      "version": 1,
+      "identifiers": {
+        "arxiv": [
+          "2610.24452"
+        ],
+        "doi": []
+      },
+      "url": "https://arxiv.org/abs/2610.24452",
+      "pdf": "https://arxiv.org/pdf/2610.24452",
+      "venue": "arXiv",
+      "comment": "29 pages, 14 figures, 16 tables. Project page: https://jjunsss.github.io/HumanSkill-4D/",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "imported": false,
+      "origin": "arxiv",
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen": "2026-10-20T05:12:04Z",
+      "last_seen": "2026-10-20T05:12:04Z",
+      "review_status": "candidate",
+      "full_text_read": false,
+      "warnings": [],
+      "versions": [],
+      "abstract_source": "arxiv",
+      "classification": {
+        "bucket": "related",
+        "tracks": [
+          "GS"
+        ],
+        "task": "adjacent",
+        "methods": [
+          "cross-modal",
+          "gaussian",
+          "geometry",
+          "temporal"
+        ],
+        "basis": "title+abstract",
+        "certainty": "needs-review",
+        "note": "自动关键词初筛;标签可能来自背景或对比描述,不代表已核实任务设置、实验条件或论文贡献。",
+        "evidence": [
+          {
+            "label": "cross-modal",
+            "quote": "nges with HumanSkill-4D, a training-free framework that shares a multimodal large language model (MLLM) and geometric operators across avatars. For each avatar, a semantic mem"
+          },
+          {
+            "label": "gaussian",
+            "quote": "pection. However, making these selections with existing language Gaussian splatting methods poses two challenges: adjacent parts and garments are hard to separate and may be referred"
+          },
+          {
+            "label": "geometry",
+            "quote": "amework that shares a multimodal large language model (MLLM) and geometric operators across avatars. For each avatar, a semantic memory links body-part and garment categori"
+          },
+          {
+            "label": "temporal",
+            "quote": "HumanSkill-4D: Training-Free Language Querying of Animatable Gaussian Avatars in Space and Time We introduce avat"
+          },
+          {
+            "label": "GS",
+            "quote": "pection. However, making these selections with existing language Gaussian splatting methods poses two challenges: adjacent parts and garments are hard to separate and may be referred"
+          }
+        ]
+      }
     }
   },
   "queries": {
     "unsupervised-pointcloud-seg": {
       "query_hash": "92213064035cd303bdb9e8d8fde63f27666cbf56c8152ed8222cdf64fcd52c3c",
-      "completed_until": "2026-10-19T13:19:54Z",
-      "last_success": "2026-10-19T13:19:54Z"
+      "completed_until": "2026-10-20T05:12:04Z",
+      "last_success": "2026-10-20T05:12:04Z"
     },
     "contrastive-learning": {
       "query_hash": "df500156a463c480a2eb038a93e2493360cee533b2bac464b5b1ca9d2ecd1f61",
-      "completed_until": "2026-10-19T13:19:54Z",
-      "last_success": "2026-10-19T13:19:54Z"
+      "completed_until": "2026-10-20T05:12:04Z",
+      "last_success": "2026-10-20T05:12:04Z"
     },
     "autonomous-driving": {
       "query_hash": "7bf636a218a76f81768419d51e4b4bcd57e46f461033c76fa44fc8733a876962",
-      "completed_until": "2026-10-19T13:19:54Z",
-      "last_success": "2026-10-19T13:19:54Z"
+      "completed_until": "2026-10-20T05:12:04Z",
+      "last_success": "2026-10-20T05:12:04Z"
     },
     "3d-gaussian": {
       "query_hash": "2e99cb734e63685e5bbe44e68201bcdc123d8df343aa3573238b0e75430217cc",
-      "completed_until": "2026-10-19T13:19:54Z",
-      "last_success": "2026-10-19T13:19:54Z"
+      "completed_until": "2026-10-20T05:12:04Z",
+      "last_success": "2026-10-20T05:12:04Z"
     }
   },
   "events": [
@@ -19741,9 +20014,38 @@
       "title": "GeoSurDepth: Harnessing Foundation Model for Spatial Geometry Consistency-Oriented Self-Supervised Surround-View Depth Estimation",
       "at": "2026-10-19T13:19:54Z",
       "previous_version": 0
+    },
+    {
+      "key": "83735d51899613f9d9f2e746",
+      "kind": "discovered",
+      "paper_id": "arxiv:2610.26816",
+      "title": "Real-Time Radar Semantic and Panoptic Scene Understanding",
+      "at": "2026-10-20T05:12:04Z"
+    },
+    {
+      "key": "224ee59ffffa8a7f91cd24c5",
+      "kind": "discovered",
+      "paper_id": "arxiv:2610.24858",
+      "title": "Arbitrary-Scale Anisotropic 3D MRI Super-Resolution with Gaussian Prototypes",
+      "at": "2026-10-20T05:12:04Z"
+    },
+    {
+      "key": "ca3dd027a97f3843ac70fc9f",
+      "kind": "discovered",
+      "paper_id": "arxiv:2610.24452",
+      "title": "HumanSkill-4D: Training-Free Language Querying of Animatable Gaussian Avatars in Space and Time",
+      "at": "2026-10-20T05:12:04Z"
+    },
+    {
+      "key": "5fd6776ffe1a5a9352b751c9",
+      "kind": "revised",
+      "paper_id": "arxiv:2610.16177",
+      "title": "DIGS: Distribution-Informed Gaussian Splatting for Training-Free Open-Vocabulary 3D Segmentation",
+      "at": "2026-10-20T05:12:04Z",
+      "previous_version": 1
     }
   ],
-  "revision_cursor": 29,
+  "revision_cursor": 15,
   "runs": [
     {
       "at": "2026-10-19T08:08:31Z",
@@ -19799,23 +20101,23 @@
       "note": "新增指本站首次发现;修订另计;关键词初筛不等于全文审核。"
     }
   ],
-  "last_full_success": "2026-10-19T13:19:54Z",
+  "last_full_success": "2026-10-20T05:12:04Z",
   "last_run": {
-    "at": "2026-10-19T13:19:54Z",
+    "at": "2026-10-20T05:12:04Z",
     "status": "ok",
     "counts": {
-      "new": 215,
+      "new": 3,
       "revised": 1,
       "existing": 0,
       "metadata": 0,
-      "unchanged": 50,
+      "unchanged": 145,
       "conflict": 0
     },
     "sources": [
       {
         "source": "unsupervised-pointcloud-seg",
-        "start": "2026-10-12T08:23:07Z",
-        "end": "2026-10-19T13:19:54Z",
+        "start": "2026-10-12T13:19:54Z",
+        "end": "2026-10-20T05:12:04Z",
         "backlog_days": 0,
         "status": "ok",
         "matched": 0,
@@ -19824,8 +20126,8 @@
       },
       {
         "source": "contrastive-learning",
-        "start": "2026-10-12T08:23:07Z",
-        "end": "2026-10-19T13:19:54Z",
+        "start": "2026-10-12T13:19:54Z",
+        "end": "2026-10-20T05:12:04Z",
         "backlog_days": 0,
         "status": "ok",
         "matched": 0,
@@ -19834,34 +20136,29 @@
       },
       {
         "source": "autonomous-driving",
-        "start": "2026-10-12T08:23:07Z",
-        "end": "2026-10-19T13:19:54Z",
+        "start": "2026-10-12T13:19:54Z",
+        "end": "2026-10-20T05:12:04Z",
         "backlog_days": 0,
         "status": "ok",
-        "matched": 8,
-        "stored": 8,
+        "matched": 9,
+        "stored": 9,
         "skipped": 0
       },
       {
         "source": "3d-gaussian",
-        "start": "2026-10-12T08:23:07Z",
-        "end": "2026-10-19T13:19:54Z",
+        "start": "2026-10-12T13:19:54Z",
+        "end": "2026-10-20T05:12:04Z",
         "backlog_days": 0,
         "status": "ok",
-        "matched": 3,
-        "stored": 3,
+        "matched": 5,
+        "stored": 5,
         "skipped": 0
       },
       {
         "source": "dblp:cvpr",
         "year": 2025,
-        "venue": "CVPR",
-        "start": "2025-01-01",
-        "end": "2025-12-31",
-        "status": "ok",
-        "matched": 3546,
-        "stored": 49,
-        "skipped": 3497
+        "status": "skipped",
+        "reason": "最近已完整抓取;未到复查间隔"
       },
       {
         "source": "dblp:cvpr",
@@ -19877,24 +20174,14 @@
       {
         "source": "dblp:iccv",
         "year": 2025,
-        "venue": "ICCV",
-        "start": "2025-01-01",
-        "end": "2025-12-31",
-        "status": "ok",
-        "matched": 3496,
-        "stored": 49,
-        "skipped": 3447
+        "status": "skipped",
+        "reason": "最近已完整抓取;未到复查间隔"
       },
       {
         "source": "dblp:eccv",
         "year": 2024,
-        "venue": "ECCV",
-        "start": "2024-01-01",
-        "end": "2024-12-31",
-        "status": "ok",
-        "matched": 27,
-        "stored": 0,
-        "skipped": 27
+        "status": "skipped",
+        "reason": "最近已完整抓取;未到复查间隔"
       },
       {
         "source": "dblp:eccv",
@@ -19910,13 +20197,8 @@
       {
         "source": "dblp:3dv",
         "year": 2025,
-        "venue": "3DV",
-        "start": "2025-01-01",
-        "end": "2025-12-31",
-        "status": "ok",
-        "matched": 142,
-        "stored": 2,
-        "skipped": 140
+        "status": "skipped",
+        "reason": "最近已完整抓取;未到复查间隔"
       },
       {
         "source": "dblp:3dv",
@@ -19932,41 +20214,36 @@
       {
         "source": "dblp:neurips",
         "year": 2025,
-        "venue": "NeurIPS",
-        "start": "2025-01-01",
-        "end": "2025-12-31",
-        "status": "ok",
-        "matched": 5823,
-        "stored": 18,
-        "skipped": 5805
+        "status": "skipped",
+        "reason": "最近已完整抓取;未到复查间隔"
       },
       {
         "source": "openalex:tpami",
         "journal": "IEEE TPAMI",
-        "start": "2026-09-19T13:19:54Z",
-        "end": "2026-10-19T13:19:54Z",
+        "start": "2026-10-12T13:19:54Z",
+        "end": "2026-10-20T05:12:04Z",
         "backlog_days": 0,
         "status": "ok",
-        "matched": 1,
+        "matched": 0,
         "stored": 0,
-        "skipped": 1
+        "skipped": 0
       },
       {
         "source": "openalex:ijcv",
         "journal": "IJCV",
-        "start": "2026-09-19T13:19:54Z",
-        "end": "2026-10-19T13:19:54Z",
+        "start": "2026-10-12T13:19:54Z",
+        "end": "2026-10-20T05:12:04Z",
         "backlog_days": 0,
         "status": "ok",
-        "matched": 40,
+        "matched": 5,
         "stored": 0,
-        "skipped": 40
+        "skipped": 5
       },
       {
         "source": "openalex:tvcg",
         "journal": "IEEE TVCG",
-        "start": "2026-09-19T13:19:54Z",
-        "end": "2026-10-19T13:19:54Z",
+        "start": "2026-10-12T13:19:54Z",
+        "end": "2026-10-20T05:12:04Z",
         "backlog_days": 0,
         "status": "ok",
         "matched": 0,
@@ -19976,8 +20253,8 @@
       {
         "source": "openalex:tip",
         "journal": "IEEE TIP",
-        "start": "2026-09-19T13:19:54Z",
-        "end": "2026-10-19T13:19:54Z",
+        "start": "2026-10-12T13:19:54Z",
+        "end": "2026-10-20T05:12:04Z",
         "backlog_days": 0,
         "status": "ok",
         "matched": 0,
@@ -19987,31 +20264,31 @@
       {
         "source": "openalex:ral",
         "journal": "IEEE RA-L",
-        "start": "2026-09-19T13:19:54Z",
-        "end": "2026-10-19T13:19:54Z",
+        "start": "2026-10-12T13:19:54Z",
+        "end": "2026-10-20T05:12:04Z",
         "backlog_days": 0,
         "status": "ok",
-        "matched": 46,
-        "stored": 1,
-        "skipped": 45
+        "matched": 1,
+        "stored": 0,
+        "skipped": 1
       },
       {
         "source": "openalex:isprs",
         "journal": "ISPRS J. P&RS",
-        "start": "2026-09-19T13:19:54Z",
-        "end": "2026-10-19T13:19:54Z",
+        "start": "2026-10-12T13:19:54Z",
+        "end": "2026-10-20T05:12:04Z",
         "backlog_days": 0,
         "status": "ok",
-        "matched": 45,
-        "stored": 2,
-        "skipped": 43
+        "matched": 12,
+        "stored": 1,
+        "skipped": 11
       },
       {
         "source": "known-revisions",
         "status": "ok",
         "matched": 40,
         "checked": 40,
-        "total_known": 51,
+        "total_known": 54,
         "stored": 40,
         "skipped": 0
       }
@@ -20029,7 +20306,7 @@
           "stored": 49
         },
         "2026": {
-          "last_success": "2026-10-19T13:19:54Z",
+          "last_success": "2026-10-20T05:12:04Z",
           "matched": 4055,
           "stored": 58
         }
@@ -20056,7 +20333,7 @@
           "stored": 0
         },
         "2026": {
-          "last_success": "2026-10-19T13:19:54Z",
+          "last_success": "2026-10-20T05:12:04Z",
           "matched": 2280,
           "stored": 30
         }
@@ -20072,7 +20349,7 @@
           "stored": 2
         },
         "2026": {
-          "last_success": "2026-10-19T13:19:54Z",
+          "last_success": "2026-10-20T05:12:04Z",
           "matched": 177,
           "stored": 6
         }
@@ -20093,33 +20370,33 @@
   "openalex": {
     "tpami": {
       "filter_hash": "8a4a53903c22830bb7bd2b7d9dfbf83c81cf7569f337dbc86aa152118b8619a0",
-      "completed_until": "2026-10-19T13:19:54Z",
-      "last_success": "2026-10-19T13:19:54Z"
+      "completed_until": "2026-10-20T05:12:04Z",
+      "last_success": "2026-10-20T05:12:04Z"
     },
     "ijcv": {
       "filter_hash": "e1699a41b1bbbb53aaa1b8d9d404eac090662ee6ec4551be146f7c53ca2b934a",
-      "completed_until": "2026-10-19T13:19:54Z",
-      "last_success": "2026-10-19T13:19:54Z"
+      "completed_until": "2026-10-20T05:12:04Z",
+      "last_success": "2026-10-20T05:12:04Z"
     },
     "tvcg": {
       "filter_hash": "bd31345905aa54af4af85ea7eadcec57ed688e69e73180c2a91d3af02eb8692d",
-      "completed_until": "2026-10-19T13:19:54Z",
-      "last_success": "2026-10-19T13:19:54Z"
+      "completed_until": "2026-10-20T05:12:04Z",
+      "last_success": "2026-10-20T05:12:04Z"
     },
     "tip": {
       "filter_hash": "4bde1e550c96d75c26508389a8fd42acdec98fa303d812a472adbf636cb57df7",
-      "completed_until": "2026-10-19T13:19:54Z",
-      "last_success": "2026-10-19T13:19:54Z"
+      "completed_until": "2026-10-20T05:12:04Z",
+      "last_success": "2026-10-20T05:12:04Z"
     },
     "ral": {
       "filter_hash": "27f8c15a362c4e70bf9ef0dbf189a68602c9782712775be815bfd6512aeb7a20",
-      "completed_until": "2026-10-19T13:19:54Z",
-      "last_success": "2026-10-19T13:19:54Z"
+      "completed_until": "2026-10-20T05:12:04Z",
+      "last_success": "2026-10-20T05:12:04Z"
     },
     "isprs": {
       "filter_hash": "62b6dc9b980c7b38d9505df72813e53d6122a339e46040c133f257723f416948",
-      "completed_until": "2026-10-19T13:19:54Z",
-      "last_success": "2026-10-19T13:19:54Z"
+      "completed_until": "2026-10-20T05:12:04Z",
+      "last_success": "2026-10-20T05:12:04Z"
     }
   }
 }
